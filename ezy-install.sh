@@ -24,7 +24,8 @@ show_help() {
   echo "  ezy-install is a lightweight command-line launcher that fetches and runs installation scripts"
   echo "  directly from this repository. It simplifies the setup of common solutions with one command."
   echo "  It also alleviates the trial-and-error process typically required when installing software,"
-  echo "  making the experience more like Windows-style roles and features installation.\n"
+  echo "  making the experience more like Windows-style roles and features installation."
+  echo
 }
 
 list_available_scripts() {
