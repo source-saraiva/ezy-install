@@ -1,22 +1,25 @@
 #!/bin/bash
 
 install_mariadb() {
-    echo -e "\nInstalling openssl...\n"
-    sudo dnf -y install openssl expect >> /dev/null 2>&1
+    sudo dnf -y install openssl expect
 
     local MARIADB_ROOT_PASSWORD=$(openssl rand -base64 16)
     local LOG_FILE="/tmp/mariadb_install.log"
 
-    echo -e "\nStarting MariaDB installation...\n"
+    echo
+    echo "Starting MariaDB installation on Rocky Linux 10..."
+    echo "Log file: $LOG_FILE"
+    echo
 
-    sudo dnf -y update >> "$LOG_FILE" 2>&1
-    sudo dnf -y install mariadb-server >> "$LOG_FILE" 2>&1
+    # Update system and install MariaDB
+    sudo dnf -y update | tee -a "$LOG_FILE"
+    sudo dnf -y install mariadb-server | tee -a "$LOG_FILE"
 
-    sudo systemctl enable --now mariadb >> "$LOG_FILE" 2>&1
+    sudo systemctl enable --now mariadb | tee -a "$LOG_FILE"
     sleep 5
 
-    # Run mysql_secure_installation non-interactively using expect
-    sudo expect <<EOF >> "$LOG_FILE" 2>&1
+    # Run mysql_secure_installation using expect
+    sudo expect <<EOF | tee -a "$LOG_FILE"
 spawn mysql_secure_installation
 
 expect "Enter current password for root (enter for none):"
@@ -49,9 +52,11 @@ send "y\r"
 expect eof
 EOF
 
-    echo -e "\nInstallation complete."
+    echo
+    echo "Installation complete."
     echo "MariaDB root password: $MARIADB_ROOT_PASSWORD"
-    echo "Installation log saved at: $LOG_FILE"
+    echo "Log saved at: $LOG_FILE"
 }
 
 install_mariadb
+
