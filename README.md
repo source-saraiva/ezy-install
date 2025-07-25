@@ -15,5 +15,5 @@
 To install `ezy-install` globally on your system:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/source-saraiva/ezy-install/main/ezy-install | sudo tee /usr/local/bin/ezy-install > /dev/null
-sudo chmod +x /usr/local/bin/ezy-install
+curl -fsSL https://raw.githubusercontent.com/source-saraiva/ezy-install/main/ezy-install.sh | sudo tee /usr/local/bin/ezy-install.sh > /dev/null
+sudo chmod +x /usr/local/bin/ezy-install.sh
