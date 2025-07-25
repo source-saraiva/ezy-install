@@ -1,12 +1,13 @@
 #!/bin/bash
 
 install_mariadb() {
+    echo -e "\nInstalling openssl...\n"
     sudo dnf -y install openssl expect >> /dev/null 2>&1
 
     local MARIADB_ROOT_PASSWORD=$(openssl rand -base64 16)
     local LOG_FILE="/tmp/mariadb_install.log"
 
-    echo -e "\nStarting MariaDB installation on Rocky Linux 10...\n"
+    echo -e "\nStarting MariaDB installation...\n"
 
     sudo dnf -y update >> "$LOG_FILE" 2>&1
     sudo dnf -y install mariadb-server >> "$LOG_FILE" 2>&1
