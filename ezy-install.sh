@@ -26,7 +26,7 @@ show_help() {
   echo "  It also alleviates the trial-and-error process typically required when installing software,"
   echo "  making the experience more like Windows-style roles and features installation."
   echo 
-  echo
+  echo ""
 }
 
 list_available_scripts() {
