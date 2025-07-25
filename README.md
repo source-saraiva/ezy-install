@@ -11,7 +11,7 @@ It also alleviates the trial-and-error process typically required when installin
 - Supports multiple tools: DHCP, Mysql, Glpi, and more  
 - Extensible: add your own `.sh` scripts to the repo  
 
-## Installation and Usage
+## Installation
 
 To install `ezy-install` globally on your system and start using it:
 
@@ -19,7 +19,10 @@ To install `ezy-install` globally on your system and start using it:
 # Download and install the launcher
 sudo curl -fsSL https://raw.githubusercontent.com/source-saraiva/ezy-install/main/ezy-install.sh -o /usr/local/bin/ezy-install
 sudo chmod +x /usr/local/bin/ezy-install
+```
+# Usage
 
+```bash
 # View available scripts
 ezy-install --list
 
