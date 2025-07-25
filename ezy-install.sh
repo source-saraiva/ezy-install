@@ -19,6 +19,12 @@ show_help() {
   echo
   echo "Example:"
   echo "  ezy-install mysql"
+  echo
+  echo "Description:"
+  echo "  ezy-install is a lightweight command-line launcher that fetches and runs installation scripts"
+  echo "  directly from this repository. It simplifies the setup of common solutions with one command."
+  echo "  It also alleviates the trial-and-error process typically required when installing software,"
+  echo "  making the experience more like Windows-style roles and features installation."
 }
 
 list_available_scripts() {
