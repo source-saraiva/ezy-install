@@ -54,6 +54,7 @@ EOF
 
     echo
     echo "Installation complete."
+    echo " # === Save the info securely for future reference ==="
     echo "MariaDB root password: $MARIADB_ROOT_PASSWORD"
     echo "Log saved at: $LOG_FILE"
 }
