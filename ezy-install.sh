@@ -1,62 +1,68 @@
 #!/bin/bash
 
-# === GitHub raw base URL (main branch) ===
-BASE_URL="https://raw.githubusercontent.com/source-saraiva/ezy-install/main"
+# ezy-install: Simple command-line installer for predefined scripts hosted on GitHub
+# Author: source-saraiva
+# Repository: https://github.com/source-saraiva/ezy-install
 
-# === List of available scripts (update manually) ===
-AVAILABLE_SCRIPTS=("mysql" "mariadb" "docker" "lamp" "nginx")
+REPO_OWNER="source-saraiva"
+REPO_NAME="ezy-install"
+BRANCH="main"
+RAW_BASE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH"
+API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents"
 
-# === Show usage instructions ===
 show_help() {
-    echo ""
-    echo "ezy-install - Download and execute install scripts from GitHub"
-    echo ""
-    echo "Usage:"
-    echo "  ezy-install <script>     Run a specific installation script"
-    echo "  ezy-install --list       List available scripts"
-    echo "  ezy-install --help       Show this help message"
-    echo ""
-    echo "Examples:"
-    echo "  ezy-install glpi"
-    echo "  ezy-install mariadb"
-    echo ""
+  echo "Usage: ezy-install <script-name>"
+  echo
+  echo "Options:"
+  echo "  --help       Show this help message"
+  echo "  --list       List available installer scripts from GitHub"
+  echo
+  echo "Example:"
+  echo "  ezy-install mysql"
 }
 
-# === List all available scripts ===
-show_list() {
-    echo ""
-    echo "Available scripts:"
-    for script in "${AVAILABLE_SCRIPTS[@]}"; do
-        echo "  - $script"
-    done
-    echo ""
-}
+list_available_scripts() {
+  echo "Fetching available scripts from GitHub..."
 
-# === Entry point ===
-SCRIPT_NAME="$1"
+  scripts=$(curl -fsSL "$API_URL" | grep '"name":' | grep '.sh' | cut -d '"' -f 4 | grep -v '^ezy-install.sh$')
 
-if [[ -z "$SCRIPT_NAME" ]]; then
-    echo "Missing argument. Use --help for instructions."
+  if [ -z "$scripts" ]; then
+    echo "No scripts found or unable to reach GitHub."
     exit 1
-fi
+  fi
 
-case "$SCRIPT_NAME" in
-    --help|-h)
-        show_help
-        exit 0
-        ;;
-    --list|-l)
-        show_list
-        exit 0
-        ;;
-    *)
-        SCRIPT_URL="${BASE_URL}/${SCRIPT_NAME}.sh"
-        echo "Downloading script from: $SCRIPT_URL"
-        curl -fsSL "$SCRIPT_URL" | bash
-        if [[ $? -ne 0 ]]; then
-            echo "Failed to execute script: $SCRIPT_NAME"
-            exit 2
-        fi
-        ;;
+  echo "Available scripts:"
+  echo "$scripts" | sed 's/\.sh$//' | sort
+}
+
+run_script() {
+  script_name="$1"
+  script_url="$RAW_BASE_URL/${script_name}.sh"
+
+  echo "Downloading and executing script: $script_name"
+
+  curl -fsSL "$script_url" | bash
+  if [ $? -ne 0 ]; then
+    echo "Error: Failed to run script '$script_name'."
+    exit 1
+  fi
+}
+
+# Main logic
+case "$1" in
+  --help|-h)
+    show_help
+    ;;
+  --list)
+    list_available_scripts
+    ;;
+  "")
+    echo "Error: No script specified."
+    echo "Run 'ezy-install --help' for usage."
+    exit 1
+    ;;
+  *)
+    run_script "$1"
+    ;;
 esac
 
