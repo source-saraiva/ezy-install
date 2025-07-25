@@ -15,12 +15,13 @@ It also alleviates the trial-and-error process typically required when installin
 
 To install `ezy-install` globally on your system and start using it:
 
+Download and install the launcher
+
 ```bash
-# Download and install the launcher
 sudo curl -fsSL https://raw.githubusercontent.com/source-saraiva/ezy-install/main/ezy-install.sh -o /usr/local/bin/ezy-install
 sudo chmod +x /usr/local/bin/ezy-install
 ```
-# Usage
+## Usage
 
 ```bash
 # View available scripts
