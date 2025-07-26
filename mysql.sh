@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear 
+
 install_mariadb() {
     # Install required packages
     sudo dnf -y install openssl expect
@@ -78,7 +80,7 @@ expect eof
 EOF
 
     echo
-    echo "=== MariaDB installation completed successfully ==="
+    echo "installation completed successfully"
     echo
     echo " # === Save this information securely ==="
     echo
