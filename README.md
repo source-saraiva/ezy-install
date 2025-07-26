@@ -23,8 +23,7 @@ sudo chmod +x /usr/local/bin/ezy-install
 ```
 ## Usage
 
-# Autocomplete
-typing ez then press TAB will auto complete the command
+💡 Tip: After installing, type `ez` and press `TAB` to autocomplete the `ezy-install` command in your terminal.
 
 ```bash
 
