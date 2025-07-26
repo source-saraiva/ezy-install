@@ -40,6 +40,7 @@ list_available_scripts() {
 
   echo "Available scripts:"
   echo "$scripts" | sed 's/\.sh$//' | sort
+  echo
 }
 
 run_script() {
