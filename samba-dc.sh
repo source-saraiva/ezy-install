@@ -1,38 +1,40 @@
 #!/bin/bash
-
-# === Samba AD DC Installation Script for Rocky Linux 10 ===
+# Samba AD DC Installation Script for Rocky Linux 10
 # Author: source-saraiva
+# Changed: 2025-07-25
+
 # This script installs and configures Samba as an Active Directory Domain Controller.
+# Must be run by a sudoer user.
 
 # Exit if any command fails
 set -e
 
-# Check if user is root
-if [ "$EUID" -ne 0 ]; then
-  echo "This script must be run as root."
+# Ensure script is run by a sudoer
+if ! sudo -n true 2>/dev/null; then
+  echo "This script must be run by a user with sudo privileges."
   exit 1
 fi
 
 # Check if IP address is static
 check_static_ip() {
   local iface=$(ip route | grep default | awk '{print $5}')
-  if grep -q 'dhcp' "/etc/sysconfig/network-scripts/ifcfg-$iface"; then
+  if sudo grep -q 'dhcp' "/etc/sysconfig/network-scripts/ifcfg-$iface"; then
     echo "Your IP address is assigned via DHCP. Please configure a static IP before proceeding."
     echo "Edit /etc/sysconfig/network-scripts/ifcfg-$iface and set BOOTPROTO=static"
     exit 1
   fi
 }
 
-# Install dependencies
+# Install required packages
 install_dependencies() {
-  dnf install -y epel-release
-  dnf update -y
-  dnf install -y samba samba-dc samba-client samba-common \
+  sudo dnf install -y epel-release
+  sudo dnf update -y
+  sudo dnf install -y samba samba-dc samba-client samba-common \
     bind-utils krb5-workstation policycoreutils-python-utils \
     expect net-tools
 }
 
-# Prompt user for configuration
+# Prompt user for domain details
 prompt_config() {
   echo
   read -p "Create new domain forest or join existing? [new/join]: " DOMAIN_MODE
@@ -60,10 +62,10 @@ prompt_config() {
   echo
 }
 
-# Provision new domain
+# Provision a new domain
 provision_domain() {
   echo "Provisioning new domain..."
-  samba-tool domain provision \
+  sudo samba-tool domain provision \
     --use-rfc2307 \
     --realm="$REALM" \
     --domain="$NETBIOS" \
@@ -75,23 +77,20 @@ provision_domain() {
 # Join existing domain
 join_domain() {
   echo "Joining existing domain..."
-  samba-tool domain join "$REALM" DC \
+  sudo samba-tool domain join "$REALM" DC \
     --dns-backend=SAMBA_INTERNAL \
     --username=Administrator \
     --password="$ADMIN_PASS"
 }
 
-# Configure system to use Samba
+# Configure Samba and services
 configure_system() {
-  # Backup and replace smb.conf
-  mv -f /etc/samba/smb.conf /etc/samba/smb.conf.bak
-  cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
-
-  # Enable and start Samba AD DC
-  systemctl enable --now samba
+  sudo mv -f /etc/samba/smb.conf /etc/samba/smb.conf.bak
+  sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+  sudo systemctl enable --now samba
 }
 
-# Show final instructions
+# Summary output
 show_summary() {
   echo
   echo "Samba AD DC setup is complete."
@@ -117,5 +116,3 @@ fi
 
 configure_system
 show_summary
-
-
