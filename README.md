@@ -8,7 +8,7 @@ It also alleviates the trial-and-error process typically required when installin
 
 - Minimalist and easy to install  
 - Downloads and runs install scripts on demand  
-- Supports multiple tools: DHCP, Mysql, Glpi, and more  
+- Supports multiple tools: DHCP, DNS, MySQL, GLPI, and more  
 - Extensible: add your own `.sh` scripts to the repo  
 
 ## Installation
