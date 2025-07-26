@@ -45,5 +45,5 @@ ezy-install --help
 ```bash
 sudo dnf install -y epel-release
 sudo dnf update -y
-sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute tcpdump
+sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute tcpdump tar
 ```
