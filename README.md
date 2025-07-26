@@ -10,7 +10,7 @@ It also alleviates the trial-and-error process typically required when installin
 - Downloads and runs install scripts on demand  
 - Supports multiple tools: DHCP, DNS, MySQL, GLPI, and more  
 - Extensible: add your own `.sh` scripts to the repo  
-- Supported Systems: [Rocky Linux 10](https://rockylinux.org/download){:target="_blank"} (or compatible RHEL-based systems)
+- Supported Systems: [Rocky Linux 10](https://rockylinux.org/download) (or compatible RHEL-based systems)
   
 
 ## Installation
