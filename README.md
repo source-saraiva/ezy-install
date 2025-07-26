@@ -11,6 +11,24 @@ It also alleviates the trial-and-error process typically required when installin
 - Supports multiple tools: DHCP, DNS, MySQL, GLPI, and more  
 - Extensible: add your own `.sh` scripts to the repo  
 
+## Requirements
+
+**Supported System**
+- Rocky Linux 10 (or compatible RHEL-based systems)
+  
+**Essential Tools**
+These packages are required for ezy-install to run properly:
+```bash
+sudo dnf install -y epel-release
+sudo dnf update -y
+sudo dnf install -y curl wget unzip openssl expect
+```
+**Optional but Useful Tools**
+Recommended for troubleshooting and system monitoring:
+```bash
+sudo dnf install -y htop bind-utils net-tools traceroute tcpdump
+```
+
 ## Installation
 
 To install `ezy-install` globally on your system and start using it:
