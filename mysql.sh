@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# Clean the cli
 clear 
+
+# Exit if any command fails
+set -e
 
 install_mariadb() {
     # Install required packages
