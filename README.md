@@ -23,7 +23,7 @@ sudo dnf install -y epel-release
 sudo dnf update -y
 sudo dnf install -y curl wget unzip openssl expect
 ```
-**Optional but Useful Tools**
+**Optional but Useful Tools**<br>
 Recommended for troubleshooting and system monitoring:
 ```bash
 sudo dnf install -y htop bind-utils net-tools traceroute tcpdump
