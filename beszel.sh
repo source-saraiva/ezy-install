@@ -43,7 +43,7 @@ INSTALL_DIR="/opt/beszel"
 
 # === DOWNLOAD AND EXTRACT BESZEL ===
 echo "Downloading Beszel ${version} (${OS}/${ARCH})..."
-curl -sL "${GITHUB_PROXY_URL}https://github.com/henrygd/beszel/releases/latest/download/${TARBALL}" -o "$TMP_PATH"
+curl -L "${GITHUB_PROXY_URL}https://github.com/henrygd/beszel/releases/latest/download/${TARBALL}" -o "$TMP_PATH"
 
 echo "Extracting Beszel to ${INSTALL_DIR}..."
 sudo mkdir -p "${INSTALL_DIR}/beszel_data"
