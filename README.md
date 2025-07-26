@@ -13,10 +13,10 @@ It also alleviates the trial-and-error process typically required when installin
 
 ## Requirements
 
-**Supported System**
+**Supported System**<br>
 - Rocky Linux 10 (or compatible RHEL-based systems)
   
-**Essential Tools**
+**Essential Tools**<br>
 These packages are required for ezy-install to run properly:
 ```bash
 sudo dnf install -y epel-release
