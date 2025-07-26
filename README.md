@@ -16,15 +16,19 @@ It also alleviates the trial-and-error process typically required when installin
 **Supported System**<br>
 - Rocky Linux 10 (or compatible RHEL-based systems)
   
-**Essential Tools**<br>
+**Essential Tools**
+
 These packages are required for ezy-install to run properly:
+
 ```bash
 sudo dnf install -y epel-release
 sudo dnf update -y
 sudo dnf install -y curl wget unzip openssl expect
 ```
-**Optional but Useful Tools**<br>
+**Optional but Useful Tools**
+
 Recommended for troubleshooting and system monitoring:
+
 ```bash
 sudo dnf install -y htop bind-utils net-tools traceroute tcpdump
 ```
