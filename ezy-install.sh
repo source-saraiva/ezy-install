@@ -4,13 +4,59 @@
 #   ezy-install: Lightweight Script Installer
 #   Author: source-saraiva
 #   Repository: https://github.com/source-saraiva/ezy-install
+#   ezy-install version: 0.0.3
 # ================================================
 
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
 RAW_BASE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH"
+SCRIPT_NAME="ezy-install.sh"
+SCRIPT_URL="$RAW_BASE_URL/$SCRIPT_NAME"
 API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents"
+
+# === GET LOCAL VERSION ===
+get_local_version() {
+  grep -E '^#   ezy-install version:' "$0" | awk '{print $NF}'
+}
+
+# === GET REMOTE VERSION ===
+get_remote_version() {
+  curl -fsSL "$SCRIPT_URL" | grep -E '^#   ezy-install version:' | awk '{print $NF}'
+}
+
+# === COMPARE VERSIONS ===
+version_gt() {
+  # returns 0 if $1 > $2
+  [ "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1" ]
+}
+
+# === SELF-UPDATE ===
+self_update() {
+  echo "Checking for ezy-install updates..."
+
+  local_version=$(get_local_version)
+  remote_version=$(get_remote_version)
+
+  if version_gt "$remote_version" "$local_version"; then
+    echo "New version available: $remote_version (current: $local_version)"
+    echo "Updating ezy-install.sh..."
+
+    curl -fsSL "$SCRIPT_URL" -o "$0.tmp"
+    if [ $? -ne 0 ]; then
+      echo "Error downloading update. Aborting."
+      rm -f "$0.tmp"
+      return
+    fi
+
+    chmod +x "$0.tmp"
+    mv "$0.tmp" "$0"
+    echo "ezy-install has been updated to version $remote_version. Please re-run your command."
+    exit 0
+  else
+    echo "ezy-install is up to date (version $local_version)."
+  fi
+}
 
 # === SHOW HELP ===
 show_help() {
@@ -68,6 +114,8 @@ run_script() {
 }
 
 # === MAIN LOGIC ===
+self_update
+
 case "$1" in
   --help|-h)
     show_help
