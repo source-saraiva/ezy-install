@@ -32,7 +32,6 @@ self_update() {
   echo "Checking for ezy-install updates..."
   echo "Current version: $CURRENT_VERSION"
 
-  # Fetch remote script content
   REMOTE_SCRIPT=$(curl -fsSL "$RAW_BASE_URL/ezy-install.sh")
   if [ -z "$REMOTE_SCRIPT" ]; then
     echo "Warning: Could not fetch remote script. Skipping update check."
@@ -50,19 +49,28 @@ self_update() {
 
   if [[ "$REMOTE_VERSION" != "$CURRENT_VERSION" ]]; then
     echo "New version available: $REMOTE_VERSION"
-    echo "Updating ezy-install.sh in /usr/local/bin..."
+    echo "Downloading new version..."
 
-    TMP_SCRIPT=$(mktemp)
+    TMP_FILE=$(mktemp /tmp/ezy-install.XXXXXX)
 
-    if sudo curl -fsSL "$RAW_BASE_URL/ezy-install.sh" -o "$TMP_SCRIPT"; then
-      sudo chmod +x "$TMP_SCRIPT"
-      sudo mv "$TMP_SCRIPT" /usr/local/bin/ezy-install
-      echo "ezy-install updated successfully to version $REMOTE_VERSION."
-      echo "Please re-run your command."
+    if curl -fsSL "$RAW_BASE_URL/ezy-install.sh" -o "$TMP_FILE"; then
+      chmod +x "$TMP_FILE"
+      echo "Launching updater..."
+
+      # Run the updater as background process and exit
+      bash -c "
+        sleep 1
+        echo 'Updater: Installing new version to /usr/local/bin/ezy-install'
+        sudo mv \"$TMP_FILE\" /usr/local/bin/ezy-install
+        sudo chmod +x /usr/local/bin/ezy-install
+        echo 'Updater: Updated to version $REMOTE_VERSION.'
+        echo 'Updater: Please re-run your previous ezy-install command.'
+      " &
+
       exit 0
     else
       echo "Error downloading update. Aborting."
-      rm -f "$TMP_SCRIPT"
+      rm -f "$TMP_FILE"
     fi
   fi
 }
