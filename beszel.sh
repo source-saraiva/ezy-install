@@ -4,6 +4,9 @@
 #   Beszel Hub Installation Script
 # ===============================
 
+# === CLEAR TERMINAL ===
+clear
+
 # === INPUT VARIABLES ===
 version=0.12.1
 PORT=8090
@@ -13,10 +16,6 @@ GITHUB_PROXY_URL="https://ghfast.top/"    # Optional proxy to speed up GitHub do
 echo "Installing required packages..."
 sudo dnf install -y tar curl
 
-# === CONFIGURE FIREWALL ===
-echo "Opening port ${PORT}/tcp in the firewall permanently..."
-sudo firewall-cmd --permanent --add-port=${PORT}/tcp
-sudo firewall-cmd --reload
 
 # === ENSURE BESZEL SYSTEM USER EXISTS ===
 echo "Ensuring system user 'beszel' exists..."
@@ -80,6 +79,70 @@ sudo systemctl enable --now beszel-hub.service
 echo "Checking service status..."
 sudo systemctl status beszel-hub.service --no-pager
 
+# === INTEGRATE WITH NGNIX ===
+sudo dnf install nginx -y
+sudo systemctl enable --now nginx
+
+# === DATA FOR ACCESS URL ===
+SERVER_IP=$(hostname -I | awk '{print $1}')
+echo "Please enter the URL you will use to access beszel (leave blank to use $(hostname -f)):"
+read -r ACCESS_URL
+[ -z "$ACCESS_URL" ] && ACCESS_URL=$(hostname -f)
+
+cat <<EOF | sudo tee /etc/nginx/conf.d/beszel.conf
+server {
+    listen 80;
+    server_name ${SERVER_IP} ;
+
+    access_log /var/log/nginx/beszel_access.log;
+    error_log /var/log/nginx/beszel_error.log;
+
+    # Redirect HTTP to HTTPS (if SSL set up)
+    # return 301 https://$server_name$request_uri;
+
+    location / {
+        proxy_pass http://localhost:8090;
+        proxy_buffering off;
+        proxy_http_version 1.1;
+
+        proxy_set_header Host \$host;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        client_max_body_size 0;
+
+        # Optional timeouts
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+
+        # Optional buffering settings for large requests
+        proxy_buffer_size   128k;
+        proxy_buffers   4 256k;
+        proxy_busy_buffers_size 256k;
+    }
+}
+
+EOF
+
+sudo systemctl restart nginx
+
+# === CONFIGURE SELINUX ===
+sudo setsebool -P httpd_can_network_connect 1
+sudo nginx -t
+sudo systemctl enable --now nginx
+
+
+# === CONFIGURE FIREWALL ===
+echo "Opening port ${PORT}/tcp in the firewall permanently..."
+sudo firewall-cmd --permanent --zone=public --add-service=http
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+
+
+
+
 # === SAVE THIS INFORMATION ===
 echo
 echo "# === Save this information for future reference ==="
@@ -89,6 +152,7 @@ echo "Runs as user:                    beszel"
 echo "Port configured:                 ${PORT}"
 echo "Firewall port opened:            ${PORT}/tcp"
 echo "GitHub proxy used:               ${GITHUB_PROXY_URL}"
+echo "Access url  http://${SERVER_IP} or http://${ACCESS_URL}"
 echo "Ensure port 45876 is open on all client devices"
 echo
 echo "# === Common commands ==="
@@ -97,3 +161,4 @@ echo "To stop service:                 sudo systemctl stop beszel-hub"
 echo "To start service:                sudo systemctl start beszel-hub"
 echo "To disable service:              sudo systemctl disable beszel-hub"
 echo "To restart service:              sudo systemctl restart beszel-hub"
+echo
