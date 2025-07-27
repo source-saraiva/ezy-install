@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# ezy-install: Simple command-line installer for predefined scripts hosted on GitHub
-# Author: source-saraiva
-# Repository: https://github.com/source-saraiva/ezy-install
+# ================================================
+#   ezy-install: Lightweight Script Installer
+#   Author: source-saraiva
+#   Repository: https://github.com/source-saraiva/ezy-install
+# ================================================
 
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
@@ -10,6 +12,7 @@ BRANCH="main"
 RAW_BASE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH"
 API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents"
 
+# === SHOW HELP ===
 show_help() {
   echo "Usage: ezy-install <script-name>"
   echo
@@ -18,7 +21,7 @@ show_help() {
   echo "  --list       List available installer scripts from GitHub"
   echo
   echo "Example:"
-  echo "  ezy-install mysql"
+  echo "  ezy-install zabbix"
   echo
   echo "Description:"
   echo "  ezy-install is a lightweight command-line launcher that fetches and runs installation scripts"
@@ -28,6 +31,7 @@ show_help() {
   echo
 }
 
+# === LIST AVAILABLE SCRIPTS ===
 list_available_scripts() {
   echo "Fetching available scripts from GitHub..."
 
@@ -43,20 +47,27 @@ list_available_scripts() {
   echo
 }
 
+# === RUN SPECIFIED SCRIPT ===
 run_script() {
   script_name="$1"
   script_url="$RAW_BASE_URL/${script_name}.sh"
 
   echo "Downloading and executing script: $script_name"
 
-  curl -fsSL "$script_url" | bash
+  TMP_SCRIPT=$(mktemp)
+  curl -fsSL "$script_url" -o "$TMP_SCRIPT"
   if [ $? -ne 0 ]; then
-    echo "Error: Failed to run script '$script_name'."
+    echo "Error: Failed to download script '$script_name'."
+    rm -f "$TMP_SCRIPT"
     exit 1
   fi
+
+  chmod +x "$TMP_SCRIPT"
+  bash "$TMP_SCRIPT"
+  rm -f "$TMP_SCRIPT"
 }
 
-# Main logic
+# === MAIN LOGIC ===
 case "$1" in
   --help|-h)
     show_help
@@ -73,4 +84,3 @@ case "$1" in
     run_script "$1"
     ;;
 esac
-
