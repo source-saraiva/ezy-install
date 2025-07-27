@@ -27,11 +27,10 @@ get_remote_version() {
 
 # === COMPARE VERSIONS ===
 version_gt() {
-  # returns 0 if $1 > $2
   [ "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1" ]
 }
 
-# === SELF-UPDATE ===
+# === SELF-UPDATE TO /usr/local/bin ===
 self_update() {
   echo "Checking for ezy-install updates..."
 
@@ -40,18 +39,22 @@ self_update() {
 
   if version_gt "$remote_version" "$local_version"; then
     echo "New version available: $remote_version (current: $local_version)"
-    echo "Updating ezy-install.sh..."
+    echo "Updating ezy-install.sh in /usr/local/bin..."
 
-    curl -fsSL "$SCRIPT_URL" -o "$0.tmp"
+    TMP_SCRIPT=$(mktemp)
+
+    sudo curl -fsSL "$SCRIPT_URL" -o "$TMP_SCRIPT"
     if [ $? -ne 0 ]; then
       echo "Error downloading update. Aborting."
-      rm -f "$0.tmp"
+      rm -f "$TMP_SCRIPT"
       return
     fi
 
-    chmod +x "$0.tmp"
-    mv "$0.tmp" "$0"
-    echo "ezy-install has been updated to version $remote_version. Please re-run your command."
+    sudo mv "$TMP_SCRIPT" /usr/local/bin/ezy-install
+    sudo chmod +x /usr/local/bin/ezy-install
+
+    echo "ezy-install has been updated to version $remote_version."
+    echo "Please re-run your command."
     exit 0
   else
     echo "ezy-install is up to date (version $local_version)."
