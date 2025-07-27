@@ -85,6 +85,7 @@ sudo systemctl enable --now nginx
 
 # === DATA FOR ACCESS URL ===
 SERVER_IP=$(hostname -I | awk '{print $1}')
+echo
 echo "Please enter the URL you will use to access beszel (leave blank to use $(hostname -f)):"
 read -r ACCESS_URL
 [ -z "$ACCESS_URL" ] && ACCESS_URL=$(hostname -f)
