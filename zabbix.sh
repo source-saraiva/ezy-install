@@ -116,3 +116,8 @@ echo "Restart Zabbix Agent:            sudo systemctl restart zabbix-agent2"
 echo "Restart NGINX:                   sudo systemctl restart nginx"
 echo "Restart PHP-FPM:                 sudo systemctl restart php-fpm"
 echo "Disable a service:               sudo systemctl disable <service-name>"
+echo 
+echo "# === Manual steps required ==="
+echo "1. Open the web URL and complete the setup wizard."
+echo "2. Configure HTTPS with a certificate (Let's Encrypt or custom)."
+echo
