@@ -163,3 +163,7 @@ echo "To start service:                sudo systemctl start beszel-hub"
 echo "To disable service:              sudo systemctl disable beszel-hub"
 echo "To restart service:              sudo systemctl restart beszel-hub"
 echo
+echo "# === Manual steps required ==="
+echo "1. Open the web URL and create a new user to access beszel."
+echo "2. Configure HTTPS with a certificate (Let's Encrypt or custom)."
+echo
