@@ -93,7 +93,7 @@ read -r ACCESS_URL
 cat <<EOF | sudo tee /etc/nginx/conf.d/beszel.conf
 server {
     listen 80;
-    server_name ${SERVER_IP} ;
+    server_name ${SERVER_IP} ${$ACCESS_URL};
 
     access_log /var/log/nginx/beszel_access.log;
     error_log /var/log/nginx/beszel_error.log;
