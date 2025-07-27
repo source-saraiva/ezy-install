@@ -55,19 +55,23 @@ self_update() {
 
     if curl -fsSL "$RAW_BASE_URL/ezy-install.sh" -o "$TMP_FILE"; then
       chmod +x "$TMP_FILE"
-      echo "Launching updater..."
 
-      # Run the updater as background process and exit
-      bash -c "
-        sleep 1
-        echo 'Updater: Installing new version to /usr/local/bin/ezy-install'
-        sudo mv \"$TMP_FILE\" /usr/local/bin/ezy-install
-        sudo chmod +x /usr/local/bin/ezy-install
-        echo 'Updater: Updated to version $REMOTE_VERSION.'
-        echo 'Updater: Please re-run your previous ezy-install command.'
-      " &
+      # Write update instructions to temporary script
+      UPDATER_SCRIPT=$(mktemp /tmp/ezy-updater.XXXXXX.sh)
 
-      exit 0
+      cat <<EOF > "$UPDATER_SCRIPT"
+#!/bin/bash
+echo "Updater: Installing new version to /usr/local/bin/ezy-install"
+sudo mv "$TMP_FILE" /usr/local/bin/ezy-install
+sudo chmod +x /usr/local/bin/ezy-install
+echo "Updater: Updated to version $REMOTE_VERSION."
+echo "Updater: Please re-run your previous ezy-install command."
+EOF
+
+      chmod +x "$UPDATER_SCRIPT"
+
+      echo "Updater: Launching interactive updater..."
+      exec bash "$UPDATER_SCRIPT"
     else
       echo "Error downloading update. Aborting."
       rm -f "$TMP_FILE"
