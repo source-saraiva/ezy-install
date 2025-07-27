@@ -4,7 +4,7 @@
 #   ezy-install: Lightweight Script Installer
 #   Author: source-saraiva
 #   Repository: https://github.com/source-saraiva/ezy-install
-#   ezy-install version: 0.0.3
+#   ezy-install version: 0.0.4
 # ================================================
 
 REPO_OWNER="source-saraiva"
