@@ -5,19 +5,41 @@
 # Repository: https://github.com/source-saraiva/ezy-install
 
 # === CONFIGURATION ===
+CURRENT_VERSION="0.0.4"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
 RAW_BASE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH"
 API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents"
-CURRENT_VERSION="0.0.4"
 VERSION_URL="$RAW_BASE_URL/VERSION"
+
+# === DISPLAY HELP MESSAGE ===
+show_help() {
+  echo "Usage: ezy-install <script-name>"
+  echo
+  echo "Options:"
+  echo "  --help       Show this help message"
+  echo "  --list       List available installer scripts from GitHub"
+  echo
+  echo "Example:"
+  echo "  ezy-install mysql"
+  echo
+  echo "Description:"
+  echo "  ezy-install is a lightweight command-line launcher that fetches and runs installation scripts"
+  echo "  directly from this repository. It simplifies the setup of common solutions with one command."
+  echo "  It also alleviates the trial-and-error process typically required when installing software,"
+  echo "  making the experience more like Windows-style roles and features installation."
+  echo
+}
 
 # === SELF UPDATE CHECK ===
 self_update() {
   echo "Checking for ezy-install updates..."
 
   LATEST_VERSION=$(curl -fsSL "$VERSION_URL" 2>/dev/null || echo "$CURRENT_VERSION")
+
+  echo "Current version: $CURRENT_VERSION"
+  echo "Remote version:  $LATEST_VERSION"
 
   if [[ "$LATEST_VERSION" != "$CURRENT_VERSION" ]]; then
     echo "New version available: $LATEST_VERSION (current: $CURRENT_VERSION)"
@@ -36,23 +58,6 @@ self_update() {
       rm -f "$TMP_SCRIPT"
     fi
   fi
-}
-
-# === HELP MESSAGE ===
-show_help() {
-  echo "Usage: ezy-install <script-name>"
-  echo
-  echo "Options:"
-  echo "  --help       Show this help message"
-  echo "  --list       List available installer scripts from GitHub"
-  echo
-  echo "Example:"
-  echo "  ezy-install mysql"
-  echo
-  echo "Description:"
-  echo "  ezy-install is a lightweight command-line launcher that fetches and runs installation scripts"
-  echo "  directly from this repository. It simplifies the setup of common solutions with one command."
-  echo
 }
 
 # === LIST AVAILABLE SCRIPTS ===
