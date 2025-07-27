@@ -152,7 +152,7 @@ echo "Runs as user:                    beszel"
 echo "Port configured:                 ${PORT}"
 echo "Firewall port opened:            ${PORT}/tcp"
 echo "GitHub proxy used:               ${GITHUB_PROXY_URL}"
-echo "Access url  http://${SERVER_IP} or http://${ACCESS_URL}"
+echo "Web UI access:                   http://${SERVER_IP} or http://${ACCESS_URL}"
 echo "Ensure port 45876 is open on all client devices"
 echo
 echo "# === Common commands ==="
