@@ -106,6 +106,8 @@ echo "Zabbix server port:              ${ZBX_PORT}/tcp"
 echo "Web UI access:                   http://${SERVER_IP}/setup.php"
 echo "PostgreSQL port:                 ${PG_PORT}/tcp"
 echo "Log file location:               ${LOG_FILE}"
+echo "default user (case-sensitive):   Admin"
+echo "default pass (case-sensitive):   zabbix"
 echo
 echo "# === Common commands ==="
 echo "Check Zabbix logs:               journalctl -u zabbix-server"
