@@ -205,7 +205,7 @@ sudo systemctl restart php-fpm httpd
 # === SAVE THIS INFORMATION ===
 echo
 echo "# === Save this information ==="
-echo "Nextcloud URL:                  http://${ACCESS_URL}/"
+echo "Nextcloud URL:                  http://${SERVER_IP}/"
 echo "MariaDB root password:          ${MYSQL_ROOT_PASS}"
 echo "Nextcloud DB user:              ${NC_DB_USER}"
 echo "Nextcloud DB password:          ${SOLUTIONS_DB_PASS}"
