@@ -25,7 +25,7 @@ echo
 while true; do
   read -s -p "Enter MariaDB root password (leave blank to auto-generate): " MYSQL_ROOT_PASS
   echo
-  read -s -p "Re-enter root password: " MYSQL_ROOT_PASS_CONFIRM
+  read -s -p "Re-enter root password (leave empty to confirm auto-generation): " MYSQL_ROOT_PASS_CONFIRM
   echo
   if [[ "$MYSQL_ROOT_PASS" != "$MYSQL_ROOT_PASS_CONFIRM" ]]; then
     echo "Passwords do not match. Try again."
@@ -43,7 +43,7 @@ echo
 while true; do
   read -s -p "Enter password for Nextcloud DB user '$NC_DB_USER' (leave blank to auto-generate): " SOLUTIONS_DB_PASS
   echo
-  read -s -p "Re-enter password: " SOLUTIONS_DB_PASS_CONFIRM
+  read -s -p "Re-enter password (leave empty to confirm auto-generation): " SOLUTIONS_DB_PASS_CONFIRM
   echo
   if [[ "$SOLUTIONS_DB_PASS" != "$SOLUTIONS_DB_PASS_CONFIRM" ]]; then
     echo "Passwords do not match. Try again."
