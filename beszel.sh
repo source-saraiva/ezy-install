@@ -12,6 +12,15 @@ version=0.12.1
 PORT=8090
 GITHUB_PROXY_URL="https://ghfast.top/"    # Optional proxy to speed up GitHub downloads
 
+
+# === PROMPT ===
+SERVER_IP=$(hostname -I | awk '{print $1}')
+echo
+echo "Please enter the URL you will use to access beszel (leave blank to use $(hostname -f)):"
+read -r ACCESS_URL
+[ -z "$ACCESS_URL" ] && ACCESS_URL=$(hostname -f)
+
+
 # === INSTALL REQUIRED TOOLS ===
 echo "Installing required packages..."
 sudo dnf install -y tar curl
@@ -84,11 +93,7 @@ sudo dnf install nginx -y
 sudo systemctl enable --now nginx
 
 # === DATA FOR ACCESS URL ===
-SERVER_IP=$(hostname -I | awk '{print $1}')
-echo
-echo "Please enter the URL you will use to access beszel (leave blank to use $(hostname -f)):"
-read -r ACCESS_URL
-[ -z "$ACCESS_URL" ] && ACCESS_URL=$(hostname -f)
+
 
 cat <<EOF | sudo tee /etc/nginx/conf.d/beszel.conf
 server {
@@ -127,7 +132,7 @@ server {
 
 EOF
 
-sudo systemctl restart nginx
+
 
 # === CONFIGURE SELINUX ===
 sudo setsebool -P httpd_can_network_connect 1
@@ -141,8 +146,8 @@ sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload
 
-
-
+# === FORCE LOADING ===
+sudo systemctl restart nginx
 
 # === SAVE THIS INFORMATION ===
 echo
