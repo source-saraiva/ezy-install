@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.0.5"
+CURRENT_VERSION="0.0.6"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -98,15 +98,21 @@ list_available_scripts() {
 # === RUN INSTALLER SCRIPT ===
 run_script() {
   script_name="$1"
+  tmp_file=$(mktemp "/tmp/${script_name}.XXXXXX.sh")
   script_url="$RAW_BASE_URL/${script_name}.sh"
 
-  echo "Downloading and executing script: $script_name"
-
-  curl -fsSL "$script_url" | bash
-  if [ $? -ne 0 ]; then
-    echo "Error: Failed to run script '$script_name'."
+  echo "Downloading script: $script_name"
+  if ! curl -fsSL "$script_url" -o "$tmp_file"; then
+    echo "Error: Failed to download script '$script_name'."
     exit 1
   fi
+
+  chmod +x "$tmp_file"
+  echo "Executing script: $tmp_file"
+  bash "$tmp_file"
+
+  # Clean up after execution
+  rm -f "$tmp_file"
 }
 
 # === MAIN LOGIC ===
