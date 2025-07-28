@@ -176,7 +176,7 @@ echo "Tuning OPCache..." | tee -a "$LOG_FILE"
 sudo cp /etc/php.d/10-opcache.ini /etc/php.d/10-opcache.ini.bak
 sudo sed -i 's/^;opcache.enable=.*/opcache.enable=1/' /etc/php.d/10-opcache.ini
 sudo sed -i 's/^;opcache.memory_consumption=.*/opcache.memory_consumption=128/' /etc/php.d/10-opcache.ini
-sudo sed -i 's/^;opcache.interned_strings_buffer=.*/opcache.interned_strings_buffer=8/' /etc/php.d/10-opcache.ini
+sudo sed -i 's/^;opcache.interned_strings_buffer=.*/opcache.interned_strings_buffer=10/' /etc/php.d/10-opcache.ini
 sudo sed -i 's/^;opcache.max_accelerated_files=.*/opcache.max_accelerated_files=4000/' /etc/php.d/10-opcache.ini
 sudo sed -i 's/^;opcache.revalidate_freq=.*/opcache.revalidate_freq=2/' /etc/php.d/10-opcache.ini
 echo "opcache.fast_shutdown=1" | sudo tee -a /etc/php.d/10-opcache.ini
