@@ -14,11 +14,19 @@ GITHUB_PROXY_URL="https://ghfast.top/"    # Optional proxy to speed up GitHub do
 
 
 # === PROMPT ===
-SERVER_IP=$(hostname -I | awk '{print $1}')
+#SERVER_IP=$(hostname -I | awk '{print $1}')
+echo
+echo "Please enter the IP you will use to access beszel (leave blank to use $(hostname -I | awk '{print $1}')):"
+read -r SERVER_IP
+[ -z "$SERVER_IP" ] && SERVER_IP=$(hostname -I | awk '{print $1}')
 echo
 echo "Please enter the URL you will use to access beszel (leave blank to use $(hostname -f)):"
 read -r ACCESS_URL
 [ -z "$ACCESS_URL" ] && ACCESS_URL=$(hostname -f)
+
+
+
+
 
 
 # === INSTALL REQUIRED TOOLS ===
