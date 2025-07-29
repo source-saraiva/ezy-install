@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ===============================
-#   Beszel Hub Installation Script
-# ===============================
+# ===========================================
+#   Beszel ezy-install installation script
+# ==========================================
 
 # === CLEAR TERMINAL ===
 clear
