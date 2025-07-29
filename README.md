@@ -48,7 +48,14 @@ sudo dnf update -y
 sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute tcpdump tar
 ```
 ## Attributions
+> The following scripts and guides were used to understand required packages and installation logic. Portions of the approach were adapted for compatibility with the `ezy-install` framework.
 
-| Source Script / Project                                           | Author(s)    | How It's Used / Modified                                                                       |
-| ----------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------- |
-| [beszel instalation script](https://beszel.dev/guide/agent-installation#binary) | Beszel  | Used as base for package installation functions. Modified to support Rocky Linux 10.|
+| Source Script / Guide                                                                                  | Author(s)       |
+|--------------------------------------------------------------------------------------------------------|-----------------|
+| [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                       | Beszel Team     |
+| [GLPI Guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                   | James Kiarie    |
+| MySQL installation guides and community scripts                                                        | Various         |
+| [Nextcloud](https://idroot.us/install-nextcloud-centos-stream-10/)                                     | r00t            |
+| PostgreSQL installation guides and community scripts                                                   | Various         |
+| [Zabbix Installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
+| []()| |
