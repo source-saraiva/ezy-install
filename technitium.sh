@@ -232,6 +232,8 @@ echo
 echo "# === Save this information for future reference ==="
 echo "Web UI access:              http://$(cat /proc/sys/kernel/hostname):5380/"
 echo "Web UI access:              http://${SERVER_IP}:5380/"
+echo "default user (case-sensitive):   admin"
+echo "default pass (case-sensitive):   admin"
 echo ""
 echo "Donate! Make a contribution by becoming a Patron: https://www.patreon.com/technitium"
 echo ""
