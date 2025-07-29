@@ -50,6 +50,8 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 ## Credits
 > The following scripts and guides were used to identify required packages and installation logic. Many of them were written for other distributions — such as Ubuntu and Rocky Linux 8 — and were significantly adapted to work reliably on Rocky Linux 10 within the `ezy-install` framework.
 
+
+
 | Source Script / Guide                                                                                  | Author(s)       |
 |--------------------------------------------------------------------------------------------------------|-----------------|
 | [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                       | Beszel Team     |
