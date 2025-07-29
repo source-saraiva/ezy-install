@@ -183,3 +183,4 @@ echo
 echo "# === Next steps ==="
 echo "1. Open the URL above to access GLPI."
 echo "2. Configure HTTPS using Let's Encrypt or other method."
+echo
