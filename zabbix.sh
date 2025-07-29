@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================================
-#   Zabbix Installation (PostgreSQL + PHP + NGINX)
+#   Zabbix ezy-install installation script
 # ================================================
 
 # === CLEAR TERMINAL ===
