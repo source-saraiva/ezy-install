@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================================
-#   Technitium Installer ()
+#   Technitium Installer (for Rocky Linux 10)
 # ================================================
 
 set -e
@@ -62,7 +62,7 @@ echo "==============================="
 echo " Technitium DNS Installer"
 echo "==============================="
 
-mkdir -p "$dnsDir"
+sudo mkdir -p "$dnsDir"
 echo "" > "$installLog"
 
 # === Check for .NET Runtime ===
@@ -113,19 +113,10 @@ if dotnet "$dnsDir/DnsServerApp.dll" --icu-test >> "$installLog" 2>&1; then
 else
   echo "Installing required ICU package..."
 
-  if command -v apt-get >/dev/null 2>&1; then
-    sudo apt-get update >> "$installLog" 2>&1
-    sudo apt-get install -y libicu-dev libicu70 libicu72 libicu74 || sudo apt-get install -y libicu* >> "$installLog" 2>&1
-  elif command -v dnf >/dev/null 2>&1; then
+  if command -v dnf >/dev/null 2>&1; then
     sudo dnf install -y libicu >> "$installLog" 2>&1
   elif command -v yum >/dev/null 2>&1; then
     sudo yum install -y libicu >> "$installLog" 2>&1
-  elif command -v zypper >/dev/null 2>&1; then
-    sudo zypper install -y libicu >> "$installLog" 2>&1
-  elif command -v pacman >/dev/null 2>&1; then
-    sudo pacman -Sy --noconfirm icu >> "$installLog" 2>&1
-  elif command -v apk >/dev/null 2>&1; then
-    sudo apk add --no-cache icu >> "$installLog" 2>&1
   else
     echo "Could not determine package manager. Install ICU manually."
     exit 1
