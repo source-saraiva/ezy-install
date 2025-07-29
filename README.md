@@ -55,7 +55,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                       | Beszel Team     |
 | [GLPI Guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                   | James Kiarie    |
 | MySQL installation guides and community scripts                                                        | Various         |
-| [Nextcloud](https://idroot.us/install-nextcloud-centos-stream-10/)                                     | r00t            |
+| [Nextcloud Guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                     | r00t            |
 | PostgreSQL installation guides and community scripts                                                   | Various         |
 | [Zabbix Installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
 | []()| |
