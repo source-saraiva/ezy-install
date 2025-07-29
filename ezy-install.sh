@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.0.6"
+CURRENT_VERSION="0.0.7"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -110,7 +110,7 @@ run_script() {
 
   chmod +x "$tmp_file"
   echo "Executing script: $tmp_file"
-  bash "$tmp_file"
+  sudo bash "$tmp_file"
 
   # Clean up after execution
   rm -f "$tmp_file"
