@@ -57,5 +57,6 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | MySQL installation guides                                                                              | Various         |
 | [Nextcloud guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                     | r00t            |
 | PostgreSQL installation guides                                                                         | Various         |
+| [Technitium installation script](https://blog.technitium.com/2017/11/running-dns-server-on-ubuntu-linux.html)| Technitum|
 | [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
-| [Technitium installation script](https://blog.technitium.com/2017/11/running-dns-server-on-ubuntu-linux.html)| |
+
