@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================================
-#   PostgreSQL 17 + Zabbix 7.4 Installation Script
+#   Zabbix Installation (PostgreSQL + PHP + NGINX)
 # ================================================
 
 # === CLEAR TERMINAL ===
