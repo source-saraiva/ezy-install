@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================================
-#   Technitium DNS Server Installer (Rocky Linux 10)
+#   Technitium ezy-install installation script
 # ================================================
 
 set -e
