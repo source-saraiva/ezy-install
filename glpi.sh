@@ -169,6 +169,8 @@ echo "Database name:                   ${DB_NAME}"
 echo "Apache configuration:            /etc/httpd/conf.d/glpi.conf"
 echo "PHP configuration:               /etc/php.ini"
 echo "Log file:                        ${LOG_FILE}"
+echo "default user (case-sensitive):   glpi"
+echo "default pass (case-sensitive):   glpi"
 echo
 echo "# === Common commands ==="
 echo "To check logs:                   journalctl -u httpd"
