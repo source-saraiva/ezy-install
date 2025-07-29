@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.0.7"
+CURRENT_VERSION="0.0.8"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -16,8 +16,8 @@ show_help() {
   echo "Usage: ezy-install <script-name>"
   echo
   echo "Options:"
-  echo "  --help       Show this help message"
-  echo "  --list       List available installer scripts from GitHub"
+  echo " -h or --help       Show this help message"
+  echo " -l or --list       List available installer scripts from GitHub"
   echo
   echo "Example:"
   echo "  ezy-install mysql"
@@ -123,7 +123,7 @@ case "$1" in
   --help|-h)
     show_help
     ;;
-  --list)
+  --list|-l)
     list_available_scripts
     ;;
   "")
