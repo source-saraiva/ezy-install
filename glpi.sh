@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================================
-#   GLPI Installer (Apache + MariaDB + PHP)
+#   GLPI ezy-install installation script
 # ================================================
 
 set -e
