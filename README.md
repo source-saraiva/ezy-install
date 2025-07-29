@@ -1,3 +1,4 @@
+<img src="https://t.bkit.co/w_6889380ddee85.gif" />
 # ezy-install
 
 **ezy-install** is a lightweight command-line launcher that fetches and runs installation scripts directly from this repository.  
@@ -63,5 +64,3 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
 
 
-
-<img src="https://t.bkit.co/w_6889380ddee85.gif" />
