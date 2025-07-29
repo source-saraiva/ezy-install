@@ -25,6 +25,7 @@ show_help() {
   echo "Description:"
   echo "  ezy-install is a lightweight command-line launcher that fetches and runs installation scripts"
   echo "  directly from this repository. It simplifies the setup of common solutions with one command."
+  echo
 }
 
 # === SELF UPDATE CHECK ===
