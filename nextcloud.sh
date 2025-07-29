@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================================================
-#   Nextcloud Installer (Apache + MariaDB + PHP)
+#   Nextcloud ezy-install installation script
 # ================================================
 
 set -e
