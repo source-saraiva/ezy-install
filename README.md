@@ -60,3 +60,6 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | [Technitium installation script](https://blog.technitium.com/2017/11/running-dns-server-on-ubuntu-linux.html)| Technitum|
 | [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
 
+
+
+<img src="https://t.bkit.co/w_6889380ddee85.gif" />
