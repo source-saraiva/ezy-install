@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# === Technitium DNS Server Installer with Firewall Configuration ===
-# Compatible with ezy-install framework
-# Author: MikeSierra
-# License: Apache-2.0
+# ================================================
+#   Technitium Installer ()
+# ================================================
 
 set -e
 
