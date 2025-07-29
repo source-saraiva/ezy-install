@@ -31,7 +31,7 @@ show_help() {
 # === SELF UPDATE CHECK ===
 self_update() {
   echo "Checking for ezy-install updates..."
-  echo "Current version: $CURRENT_VERSION"
+  echo "Local version: $CURRENT_VERSION"
 
   REMOTE_SCRIPT=$(curl -fsSL "$RAW_BASE_URL/ezy-install.sh")
   if [ -z "$REMOTE_SCRIPT" ]; then
