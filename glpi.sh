@@ -160,7 +160,7 @@ sudo setsebool -P allow_httpd_mod_auth_ntlm_winbind 1
 
 # === SAVE THIS INFORMATION ===
 echo
-echo "# === Save this information ==="
+echo "# === Save this information for future reference ==="
 echo "GLPI URL:                        http://${SERVER_IP}/"
 echo "MariaDB root password:           ${MYSQL_ROOT_PASS}"
 echo "GLPI DB user:                    ${DB_USER}"
