@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ===============================
-#   MariaDB Installation Script
-# ===============================
+# ===========================================
+#   MariaDB ezy-install installation script
+# ===========================================
 
 # === CLEAR TERMINAL ===
 clear
