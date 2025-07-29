@@ -48,14 +48,14 @@ sudo dnf update -y
 sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute tcpdump tar
 ```
 ## Credits
-> The following scripts and guides were used to understand required packages and installation logic. Portions of the approach were adapted for compatibility with the `ezy-install` framework.
+> The following scripts and guides were used to identify required packages and installation logic. Many of them were written for other distributions — such as Ubuntu and Rocky Linux 8 — and were significantly adapted to work reliably on Rocky Linux 10 within the `ezy-install` framework.
 
 | Source Script / Guide                                                                                  | Author(s)       |
 |--------------------------------------------------------------------------------------------------------|-----------------|
 | [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                       | Beszel Team     |
-| [GLPI Guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                   | James Kiarie    |
-| MySQL installation guides and community scripts                                                        | Various         |
-| [Nextcloud Guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                     | r00t            |
-| PostgreSQL installation guides and community scripts                                                   | Various         |
-| [Zabbix Installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
-| []()| |
+| [GLPI guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                   | James Kiarie    |
+| MySQL installation guides                                                                              | Various         |
+| [Nextcloud guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                     | r00t            |
+| PostgreSQL installation guides                                                                         | Various         |
+| [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team|
+| [Technitium installation script](https://blog.technitium.com/2017/11/running-dns-server-on-ubuntu-linux.html)| |
