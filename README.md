@@ -47,7 +47,7 @@ sudo dnf install -y epel-release
 sudo dnf update -y
 sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute tcpdump tar
 ```
-## Attributions
+## Credits
 > The following scripts and guides were used to understand required packages and installation logic. Portions of the approach were adapted for compatibility with the `ezy-install` framework.
 
 | Source Script / Guide                                                                                  | Author(s)       |
