@@ -158,6 +158,9 @@ sudo setsebool -P httpd_can_network_connect_db 1
 sudo setsebool -P httpd_mod_auth_ntlm_winbind 1
 sudo setsebool -P allow_httpd_mod_auth_ntlm_winbind 1
 
+# Apache restart 
+sudo systemctl restart httpd
+
 # === SAVE THIS INFORMATION ===
 echo
 echo "# === Save this information for future reference ==="
