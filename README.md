@@ -47,3 +47,8 @@ sudo dnf install -y epel-release
 sudo dnf update -y
 sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute tcpdump tar
 ```
+## Attributions
+
+| Source Script / Project                                           | Author(s)    | How It's Used / Modified                                                                       |
+| ----------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------- |
+| [beszel instalation script](https://beszel.dev/guide/agent-installation#binary) | Beszel  | Used as base for package installation functions. Modified to support Rocky Linux 10.|
