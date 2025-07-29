@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ===============================
-#   PostgreSQL 17 Installation Script
-# ===============================
+# ===================================================
+#   PostgreSQL 17 ezy-install installation script
+# ===================================================
 
 # === CLEAR TERMINAL ===
 clear
