@@ -1,10 +1,9 @@
-<img src="https://t.bkit.co/w_6889db49df897.gif" />
-
 # ezy-install
 
 **ezy-install** is a lightweight command-line launcher that fetches and runs installation scripts directly from this repository.  
 It simplifies the setup of common solutions with one command.  
 It also alleviates the trial-and-error process typically required when installing software, making the experience more like Windows-style roles and features installation.
+<img src="https://t.bkit.co/w_6889db49df897.gif" />
 
 ## Features
 
