@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.0.9"
+CURRENT_VERSION="0.1.0"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -91,6 +91,7 @@ list_available_scripts() {
     exit 1
   fi
 
+  echo
   echo "====================="
   echo "Available scripts:"
   echo "====================="
