@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.1.0"
+CURRENT_VERSION="0.1.1"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -84,7 +84,7 @@ EOF
 list_available_scripts() {
   echo "Fetching available scripts from GitHub..."
 
-  scripts=$(curl -fsSL "$API_URL" | grep '"name":' | grep '.sh' | cut -d '"' -f 4 | grep -v '^ezy-install.sh$')
+  scripts=$(curl -fsSL "$API_URL" | grep '"name":' | grep '.sh' | cut -d '"' -f 4 | grep -v '^ezy-install.sh$' | sed 's/\.sh$//' | sort)
 
   if [ -z "$scripts" ]; then
     echo "No scripts found or unable to reach GitHub."
@@ -92,10 +92,30 @@ list_available_scripts() {
   fi
 
   echo
-  echo "====================="
-  echo "Available scripts:"
-  echo "====================="
-  echo "$scripts" | sed 's/\.sh$//' | sort
+  echo "==========================================================="
+  echo "                       Available Scripts"
+  echo "==========================================================="
+
+  # Convert scripts list into array
+  script_array=()
+  while IFS= read -r line; do
+    script_array+=("$line")
+  done <<< "$scripts"
+
+  total=${#script_array[@]}
+  cols=3
+  rows=$(( (total + cols - 1) / cols ))
+
+  for ((i = 0; i < rows; i++)); do
+    for ((j = 0; j < cols; j++)); do
+      index=$((j * rows + i))
+      if [ $index -lt $total ]; then
+        printf "%-25s" "${script_array[$index]}"
+      fi
+    done
+    echo
+  done
+
   echo
 }
 
