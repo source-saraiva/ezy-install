@@ -1,4 +1,4 @@
-<img src="https://t.bkit.co/w_6889380ddee85.gif" />
+<img src="https://t.bkit.co/w_6889db49df897.gif" />
 
 # ezy-install
 
