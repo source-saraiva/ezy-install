@@ -1,4 +1,5 @@
 <img src="https://t.bkit.co/w_6889380ddee85.gif" />
+
 # ezy-install
 
 **ezy-install** is a lightweight command-line launcher that fetches and runs installation scripts directly from this repository.  
