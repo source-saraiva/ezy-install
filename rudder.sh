@@ -1423,3 +1423,4 @@ echo "To stop service:                sudo systemctl stop rudder-server"
 echo "To restart service:             sudo systemctl restart rudder-server"
 echo "To enable at boot:              sudo systemctl enable rudder-server"
 echo "To disable at boot:             sudo systemctl disable rudder-server"
+echo
