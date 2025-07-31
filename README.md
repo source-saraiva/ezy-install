@@ -1,7 +1,11 @@
 # ezy-install
 
-**ezy-install** is a lightweight command-line launcher that fetches and runs installation scripts directly from this repository. It simplifies the setup of common solutions with one command.  
-It also alleviates the trial-and-error process typically required when installing software, making the experience more like Windows-style roles and features installation.
+**ezy-install** is a lightweight command-line launcher that fetches and runs installation scripts directly on a Linux-based system from this repository. It’s built for sysadmins and devs who want to deploy technical solutions quickly and consistently, without digging through outdated blogs or trial-and-error setup guides.
+
+Inspired by the simplicity of “Roles and Features” in Windows Server, ezy-install brings a similar experience to Linux:
+Just one command, and you’re up and running.
+
+Tired of blog-hopping, debugging broken install scripts, and trying to piece together how to get a monitoring solution or helpdesk system working? This tool is for you.
 
 ## Features
 
