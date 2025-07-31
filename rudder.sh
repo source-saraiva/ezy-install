@@ -30,7 +30,7 @@ fi
 
 # === FIREWALL ===
 echo "Configuring firewall..."
-sudo firewall-cmd --add-service={https} --permanent
+sudo firewall-cmd --add-service=https --permanent
 sudo firewall-cmd --reload
 
 
