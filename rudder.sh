@@ -1390,6 +1390,9 @@ case "${COMMAND}" in
     ;;
 esac
 
+# === CREATE A USER ===
+echo -e "${RUDDER_ROOT_USER}\n${RUDDER_ROOT_PASS}" | sudo rudder server create-user -u admin
+
 # === SAVE THIS INFORMATION ===
 echo
 echo "# === Save this information for future reference ==="
