@@ -2,9 +2,11 @@
 
 clear 
 
-# === VARIABLES ===
-COMMAND="setup-server" 
+# === STATIC PARAMETERS ===
+COMMAND="setup-server"
 RUDDER_VERSION="8.3"
+SERVER="rudder"
+PLUGINS="all"
 
 # === PROMPT ===
 
