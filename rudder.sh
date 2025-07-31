@@ -3,7 +3,7 @@
 clear 
 
 # === VARIABLES ===
-RUDDER_VERSION=8.3
+RUDDER_VERSION="8.3"
 
 # === PROMPT ===
 
