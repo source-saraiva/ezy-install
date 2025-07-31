@@ -7,6 +7,7 @@ COMMAND="setup-server"
 RUDDER_VERSION="8.3"
 SERVER="$(hostname -f)"
 PLUGINS="all"
+SERVER_IP=$(hostname -I | awk '{print $1}')
 
 # === PROMPT ===
 
@@ -34,10 +35,7 @@ if [ -z "$RUDDER_ROOT_PASS" ]; then
 fi
 
 
-# === FIREWALL ===
-echo "Configuring firewall..."
-sudo firewall-cmd --add-service=https --permanent
-sudo firewall-cmd --reload
+
 
 
 # === ORIGINAL SCRIPT ===
@@ -1396,6 +1394,14 @@ case "${COMMAND}" in
     usage
     ;;
 esac
+
+
+# === FIREWALL ===
+echo "Configuring firewall..."
+sudo firewall-cmd --add-service=https --permanent
+sudo systemctl restart firewalld
+
+
 
 # === CREATE A USER ===
 echo -e "${RUDDER_ROOT_USER}\n${RUDDER_ROOT_PASS}" | sudo rudder server create-user -u admin
