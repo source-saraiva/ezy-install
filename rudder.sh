@@ -2,6 +2,9 @@
 
 clear 
 
+# === VARIABLES ===
+RUDDER_VERSION=8.3
+
 # === PROMPT ===
 
 # Ask for username
@@ -1295,7 +1298,8 @@ preinst_check() {
 setlocal || re_exec "$@"
 
 COMMAND="$1"
-RUDDER_VERSION=`rudder_real_version "$2"`
+#RUDDER_VERSION=`rudder_real_version "$2"`
+RUDDER_VERSION=${RUDDER_VERSION}
 SERVER="$3"
 PLUGINS="$3"
 
