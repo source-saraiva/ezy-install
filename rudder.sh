@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear 
+
 # === PROMPT ===
 
 # Ask for username
