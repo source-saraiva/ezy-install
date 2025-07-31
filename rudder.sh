@@ -1300,11 +1300,11 @@ preinst_check() {
 
 setlocal || re_exec "$@"
 
-COMMAND="$1"
+#COMMAND="$1"
 #RUDDER_VERSION=`rudder_real_version "$2"`
-RUDDER_VERSION=${RUDDER_VERSION}
-SERVER="$3"
-PLUGINS="$3"
+#RUDDER_VERSION=${RUDDER_VERSION}
+#SERVER="$3"
+#PLUGINS="$3"
 
 PREFIX=$(echo "${RUDDER_VERSION}" | cut -f 1 -d "/")
 if [ "${PREFIX}" = "ci" ]
