@@ -1404,7 +1404,7 @@ sudo systemctl restart firewalld
 
 
 # === CREATE A USER ===
-echo -e "${RUDDER_ROOT_USER}\n${RUDDER_ROOT_PASS}" | sudo rudder server create-user -u admin
+sudo rudder server create-user -u ${RUDDER_ROOT_USER} -p ${RUDDER_ROOT_PASS}
 
 # === SAVE THIS INFORMATION ===
 echo
@@ -1416,7 +1416,7 @@ echo "Log file:                       ${LOG_FILE:-/var/log/rudder/webapp/webapp.
 echo "Main configuration:             /opt/rudder/etc/"
 echo
 echo "# === Common commands ==="
-echo "To check logs:                  journalctl -u rudder-webapp"
+echo "To check logs:                  journalctl -u rudder-server"
 echo "To check service status:        sudo systemctl status rudder-server"
 echo "To start service:               sudo systemctl start rudder-server"
 echo "To stop service:                sudo systemctl stop rudder-server"
