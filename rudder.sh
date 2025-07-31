@@ -5,7 +5,7 @@ clear
 # === STATIC PARAMETERS ===
 COMMAND="setup-server"
 RUDDER_VERSION="8.3"
-SERVER="rudder"
+SERVER="$(hostname -f)"
 PLUGINS="all"
 
 # === PROMPT ===
