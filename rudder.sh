@@ -3,6 +3,7 @@
 clear 
 
 # === VARIABLES ===
+COMMAND="setup-server" 
 RUDDER_VERSION="8.3"
 
 # === PROMPT ===
