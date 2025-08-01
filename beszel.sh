@@ -58,8 +58,35 @@ TMP_PATH="/tmp/${TARBALL}"
 INSTALL_DIR="/opt/beszel"
 
 # === DOWNLOAD AND EXTRACT BESZEL ===
-echo "Downloading Beszel ${version} (${OS}/${ARCH})..."
-curl -k -L "${GITHUB_PROXY_URL}https://github.com/henrygd/beszel/releases/latest/download/${TARBALL}" -o "$TMP_PATH"
+#echo "Downloading Beszel ${version} (${OS}/${ARCH})..."
+#curl -k -L "${GITHUB_PROXY_URL}https://github.com/henrygd/beszel/releases/latest/download/${TARBALL}" -o "$TMP_PATH"
+
+# === ATTEMPT DOWNLOAD WITH PROXY FIRST ===
+echo "Trying to download Beszel ${version} via proxy..."
+
+DOWNLOAD_URL="https://github.com/henrygd/beszel/releases/download/v${version}/${TARBALL}"
+PROXY_URL="${GITHUB_PROXY_URL}${DOWNLOAD_URL}"
+
+# Try proxy
+curl -L --fail -o "$TMP_PATH" "$PROXY_URL"
+
+# Check if download failed or is not a valid archive
+if [ $? -ne 0 ] || ! file "$TMP_PATH" | grep -q 'gzip compressed data'; then
+  echo "Proxy download failed or returned invalid file. Falling back to direct GitHub..."
+  curl -L --fail -o "$TMP_PATH" "$DOWNLOAD_URL"
+
+  # Re-check
+  if [ $? -ne 0 ] || ! file "$TMP_PATH" | grep -q 'gzip compressed data'; then
+    echo "Download failed from both proxy and direct GitHub."
+    exit 1
+  fi
+else
+  echo "Download via proxy succeeded."
+fi
+
+
+
+
 
 echo "Extracting Beszel to ${INSTALL_DIR}..."
 sudo mkdir -p "${INSTALL_DIR}/beszel_data"
