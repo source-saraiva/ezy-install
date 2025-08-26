@@ -33,6 +33,8 @@ sudo chmod +x /usr/local/bin/ezy-install
 ```bash
 
 # View available scripts
+ezy-install -l
+or
 ezy-install --list
 
 # Install a service (example: MariaDB)
