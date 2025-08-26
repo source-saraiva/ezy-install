@@ -41,6 +41,8 @@ ezy-install --list
 ezy-install mysql
 
 # Show help
+ezy-install -h
+or
 ezy-install --help
 ```
 
