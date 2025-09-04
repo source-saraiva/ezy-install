@@ -68,11 +68,3 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | [Rudder installation script](https://docs.rudder.io/reference/8.3/installation/server/rhel.html)                                                                  | Rudder Team   |
 
 
-## COEFIT
-
-ezy-install automates the deployment of many roles that are part of a **co**st-**ef**fective **IT** infrastructure.
-
-
-
-
-
