@@ -59,9 +59,9 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 
 
 
-| Roles       | Source Script / Guide                                                                                                                                             | Author(s)     |
+| Roles       | Source Script / Guide                                                                                                                                             | Credit(s)     |
 |-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| Besze       | [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                                                                                  | Beszel Team   |
+| Beszel      | [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                                                                                  | Beszel Team   |
 | GLPI        | [GLPI guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                                                                              | James Kiarie  |
 | MySQL       | MySQL installation guides                                                                                                                                         | Various       |
 | NextCloud   | [Nextcloud guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                                                                                | r00t          |
