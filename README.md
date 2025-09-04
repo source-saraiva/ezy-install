@@ -1,11 +1,9 @@
 # ezy-install
 
-**ezy-install** is a lightweight command-line launcher that fetches and runs installation scripts directly on a Linux-based system from this repository. It’s built for sysadmins and devs who want to deploy technical solutions quickly and consistently, without digging through outdated blogs or trial-and-error setup guides.
+**ezy-install** is a collection of scripts that simplifies the installation and configuration of common packages on Linux servers. Inspired by the "Add Roles and Features" wizard in Microsoft Windows Server, ezy-install offers a similar experience for Linux system administrators. It’s built for sysadmins and devs who want to deploy technical solutions quickly and consistently, without digging through outdated blogs or trial-and-error setup guides.
 
-Inspired by the simplicity of “Roles and Features” in Windows Server, ezy-install brings a similar experience to Linux:
-Just one command, and you’re up and running.
+Setting up a Linux server for specific roles (such as DHCP, DNS, IT asset management, etc.) usually requires many manual steps. ezy-install automates these tasks, allowing you to prepare your server with just one command, and you’re up and running.
 
-Tired of blog-hopping, debugging broken install scripts, and trying to piece together how to get a monitoring solution or helpdesk system working? This tool is for you.
 
 ## Features
 
@@ -59,14 +57,22 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 
 
 
-| Roles       | Source Script / Guide                                                                                                                                             | Credit(s)     |
-|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| Beszel      | [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                                                                                  | Beszel Team   |
-| GLPI        | [GLPI guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                                                                              | James Kiarie  |
-| MySQL       | MySQL installation guides                                                                                                                                         | Various       |
-| NextCloud   | [Nextcloud guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                                                                                | r00t          |
-| PostgreSQL  | PostgreSQL installation guides                                                                                                                                    | Various       |
-| Zabbix      | [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team   |
-| Rudder      | [Rudder installation script](https://docs.rudder.io/reference/8.3/installation/server/rhel.html)                                                                  | Rudder Team   |
+| Source Script / Guide                                                                                                                                             | Credit(s)     |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| [Beszel installation script](https://beszel.dev/guide/agent-installation#binary)                                                                                  | Beszel Team   |
+| [GLPI guide on Tecmint](https://www.tecmint.com/install-glpi-asset-management-rhel/)                                                                              | James Kiarie  |
+| MySQL installation guides                                                                                                                                         | Various       |
+| [Nextcloud guide on idroot](https://idroot.us/install-nextcloud-centos-stream-10/)                                                                                | r00t          |
+| PostgreSQL installation guides                                                                                                                                    | Various       |
+| [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team   |
+| [Rudder installation script](https://docs.rudder.io/reference/8.3/installation/server/rhel.html)                                                                  | Rudder Team   |
+
+
+## COEFIT
+
+ezy-install automates the deployment of many roles that are part of a **co**st-**ef**fective **IT** infrastructure.
+
+
+
 
 
