@@ -9,7 +9,7 @@ Setting up a Linux server for specific roles (such as DHCP, DNS, IT asset manage
 
 - Minimalist and easy to install  
 - Downloads and runs install scripts on demand  
-- Supports multiple tools: DHCP, DNS, MySQL, GLPI, and more  
+- Supports multiple tools: view  
 - Extensible: add your own `.sh` scripts to the repo  
 - Supported Systems: [Rocky Linux 10](https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.0-x86_64-minimal.iso) (or compatible RHEL-based systems)
   
@@ -69,7 +69,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 
 
 
-## Use ezy-install to deploy a cost efective IT infrastructure
+## Use ezy-install to deploy a cost effective IT infrastructure (COEFIT)
 
 🟢 = deployable using ezy-install
 
