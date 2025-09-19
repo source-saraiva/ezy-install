@@ -67,4 +67,26 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | [Zabbix installation script](https://www.zabbix.com/download?zabbix=7.4&os_distribution=rocky_linux&os_version=9&components=server_frontend_agent&db=pgsql&ws=nginx) | Zabbix Team   |
 | [Rudder installation script](https://docs.rudder.io/reference/8.3/installation/server/rhel.html)                                                                  | Rudder Team   |
 
+## Use ezy-install to deploy a cost efective IT infrastructure
+
+|                                 |                            | Deployable using ezy-install  |
+| Service Category                | Recommendation             | Rocky Linux 9 | Rocky Linux 10 |
+|---------------------------------|----------------------------|---------------|----------------|
+| Virtualization                  | Proxmox VE                 | 📀            | 📀             |
+| Firewall / VPN / IDS / IPS      | Opnsense                   | 📀            | 📀             |
+| Directory                       | Windows Active Directory   | 📀            | 📀             |
+| Server OS                       | Rocky Linux                | 🟢            | 🟢             |
+| Collaboration & Communication   | Nextcloud Files            | 🟢            | 🟢             |
+| Service Desk / Inventory        | GLPI                       | 🟢            | 🟢             |
+| Telephony                       | Issabel                    | 📀            | 📀             |
+| Monitoring                      | Zabbix                     | 🟢            | 🟢             |
+| Patch Management                | Rudder                     | 🟢            | 🟢             |
+| Database Server                 | MariaDB                    | 🟢            | 🟢             |
+| Database Server                 | PostgreSQL                 | 🟢            | 🟢             |
+| Password Management             | Passbolt                   | 🟡            | 🟡             |
+| Log Management                  | Graylog                    | 🟡            | 🟡             |
+| Asset Discovery                 | NetBox                     | 🟡            | 🟡             |
+| SIEM                            | Wazuh                      | 🟡            | 🟡             |
+| Backup                          | Proxmox Backup Server      | 📀            | 📀             |
+| Office Productivity             | Libre Office               | 🔴            | 🔴             |
 
