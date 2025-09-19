@@ -69,6 +69,10 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 
 ## Use ezy-install to deploy a cost efective IT infrastructure
 
+🟢 = Deployable using ezy-install
+🔴 = not available
+🟡 = planned / not yet available
+📀 = only in ISO Format
 
 | Service Category                | Recommendation             | Rocky Linux 9 | Rocky Linux 10 |
 |---------------------------------|----------------------------|---------------|----------------|
