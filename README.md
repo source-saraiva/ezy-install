@@ -69,24 +69,24 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 
 ## Use ezy-install to deploy a cost efective IT infrastructure
 
-|                                 |                            | Deployable using ezy-install  |
+
 | Service Category                | Recommendation             | Rocky Linux 9 | Rocky Linux 10 |
 |---------------------------------|----------------------------|---------------|----------------|
-| Virtualization                  | Proxmox VE                 | 📀            | 📀             |
-| Firewall / VPN / IDS / IPS      | Opnsense                   | 📀            | 📀             |
-| Directory                       | Windows Active Directory   | 📀            | 📀             |
-| Server OS                       | Rocky Linux                | 🟢            | 🟢             |
-| Collaboration & Communication   | Nextcloud Files            | 🟢            | 🟢             |
-| Service Desk / Inventory        | GLPI                       | 🟢            | 🟢             |
-| Telephony                       | Issabel                    | 📀            | 📀             |
-| Monitoring                      | Zabbix                     | 🟢            | 🟢             |
-| Patch Management                | Rudder                     | 🟢            | 🟢             |
-| Database Server                 | MariaDB                    | 🟢            | 🟢             |
-| Database Server                 | PostgreSQL                 | 🟢            | 🟢             |
-| Password Management             | Passbolt                   | 🟡            | 🟡             |
-| Log Management                  | Graylog                    | 🟡            | 🟡             |
-| Asset Discovery                 | NetBox                     | 🟡            | 🟡             |
-| SIEM                            | Wazuh                      | 🟡            | 🟡             |
-| Backup                          | Proxmox Backup Server      | 📀            | 📀             |
-| Office Productivity             | Libre Office               | 🔴            | 🔴             |
+| Virtualization                  | Proxmox VE                 | 📀ISO        | 📀ISO          |
+| Firewall / VPN / IDS / IPS      | Opnsense                   | 📀ISO        | 📀ISO          |
+| Directory                       | Windows Active Directory   | 📀ISO        | 📀ISO          |
+| Server OS                       | Rocky Linux                | 🟡           | 🟢             |
+| Collaboration & Communication   | Nextcloud Files            | 🟡           | 🟢             |
+| Service Desk / Inventory        | GLPI                       | 🟡           | 🟢             |
+| Telephony                       | Issabel                    | 📀ISO        | 📀ISO          |
+| Monitoring                      | Zabbix                     | 🟡           | 🟢             |
+| Patch Management                | Rudder                     | 🟡           | 🟢             |
+| Database Server                 | MariaDB                    | 🟡           | 🟢             |
+| Database Server                 | PostgreSQL                 | 🟡           | 🟢             |
+| Password Management             | Passbolt                   | 🟡           | 🟡             |
+| Log Management                  | Graylog                    | 🟡           | 🟡             |
+| Asset Discovery                 | NetBox                     | 🟡           | 🟡             |
+| SIEM                            | Wazuh                      | 🟡           | 🟡             |
+| Backup                          | Proxmox Backup Server      | 📀ISO        | 📀ISo          |
+| Office Productivity             | Libre Office               | 🔴           | 🔴             |
 
