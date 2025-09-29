@@ -86,7 +86,8 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Firewall / VPN / IDS / IPS      | Opnsense                   | 📀ISO        | 📀ISO          |
 | Telephony                       | Issabel                    | 📀ISO        | 📀ISO          |
 | Directory                       | Windows Active Directory   | 📀ISO        | 📀ISO          |
-| Server OS                       | Rocky Linux                | 🟡           | 🟢             |
+| Server OS                       | Rocky Linux                | 📀ISO        | 📀ISO          |
+| LCX Rocky Linux 9 CT Templates  | Rocky Linux 9              | 🟡           | 🔴             |
 | Collaboration & Communication   | Nextcloud Files            | 🟡           | 🟢             |
 | Service Desk / Inventory        | GLPI                       | 🟡           | 🟢             |
 | Monitoring                      | Zabbix                     | 🟡           | 🟢             |
@@ -98,5 +99,5 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Asset Discovery                 | NetBox                     | 🟡           | 🟡             |
 | SIEM                            | Wazuh                      | 🟡           | 🟡             |
 | Office Productivity             | Libre Office               | 🔴           | 🔴             |
-| LCX Rocky Linux 9 CT Templates  | Rocky Linux 9              | 🟡           | 🟡             |
+
 
