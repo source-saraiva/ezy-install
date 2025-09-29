@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.2.4"
+CURRENT_VERSION="0.2.5"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -20,10 +20,16 @@ fi
 
 # --- Function: Check for updates ---
 check_updates() {
-    LATEST_VERSION=$(curl -s "https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH/ezy-install.version" 2>/dev/null)
-    if [[ -n "$LATEST_VERSION" && "$LATEST_VERSION" != "$CURRENT_VERSION" ]]; then
-        echo "⚠️  A new version of ezy-install is available: $LATEST_VERSION (current: $CURRENT_VERSION)"
-        echo "Update with: curl -o /usr/local/bin/ezy-install https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH/ezy-install.sh && chmod +x /usr/local/bin/ezy-install"
+    REMOTE_SCRIPT=$(curl -s "$RAW_BASE_URL/ezy-install.sh")
+    if [[ -z "$REMOTE_SCRIPT" ]]; then
+        return
+    fi
+
+    REMOTE_VERSION=$(echo "$REMOTE_SCRIPT" | grep '^CURRENT_VERSION=' | cut -d '"' -f2)
+
+    if [[ -n "$REMOTE_VERSION" && "$REMOTE_VERSION" != "$CURRENT_VERSION" ]]; then
+        echo "⚠️  A new version of ezy-install is available: $REMOTE_VERSION (current: $CURRENT_VERSION)"
+        echo "Update with: curl -o /usr/local/bin/ezy-install $RAW_BASE_URL/ezy-install.sh && chmod +x /usr/local/bin/ezy-install"
     fi
 }
 
