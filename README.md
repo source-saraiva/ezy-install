@@ -73,9 +73,9 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 
 🟢 = deployable using ezy-install
 
-🔴 = not available
+🔴 = not yet available
 
-🟡 = planned / not yet available
+🟡 = planned
 
 📀 = only in ISO Format
 
@@ -88,12 +88,12 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Directory                       | Windows Active Directory   | 📀ISO        | 📀ISO          |
 | Server OS                       | Rocky Linux                | 📀ISO        | 📀ISO          |
 | Proxmox LCX Container Templates | Rocky Linux                | 🟢           | 🔴             |
-| Collaboration & Communication   | Nextcloud Files            | 🟢           | 🟢             |
-| Service Desk / Inventory        | GLPI                       | 🟡           | 🟢             |
-| Monitoring                      | Zabbix                     | 🟡           | 🟢             |
-| Patch Management                | Rudder                     | 🟡           | 🟢             |
-| Database Server                 | MariaDB                    | 🟡           | 🟢             |
-| Database Server                 | PostgreSQL                 | 🟡           | 🟢             |
+| Collaboration & Communication   | Nextcloud Files            | 🟡           | 🟡             |
+| Service Desk / Inventory        | GLPI                       | 🟡           | 🟡             |
+| Monitoring                      | Zabbix                     | 🟡           | 🟡             |
+| Patch Management                | Rudder                     | 🟡           | 🟡             |
+| Database Server                 | MariaDB                    | 🟡           | 🟡             |
+| Database Server                 | PostgreSQL                 | 🟡           | 🟡             |
 | Password Management             | Passbolt                   | 🟡           | 🔴             |
 | Log Management                  | Graylog                    | 🟡           | 🟡             |
 | Asset Discovery                 | NetBox                     | 🟡           | 🟡             |
