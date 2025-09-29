@@ -1,15 +1,21 @@
 #!/bin/bash
-#
-# ezy-install wrapper script
-# This script fetches and runs installation scripts from the GitHub repo source-saraiva/ezy-install
-#
+
+# ===========================================================
+# ezy-install: Wrapper installer with Rocky Linux version detection
+# Author: source-saraiva
+# Repository: https://github.com/source-saraiva/ezy-install
+# ===========================================================
+
+CURRENT_VERSION="0.2.2"
+REPO_OWNER="source-saraiva"
+REPO_NAME="ezy-install"
+BRANCH="main"
+RAW_BASE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH"
+API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents"
 
 # ==============================
-# Configuration
+# Detect Rocky Linux version
 # ==============================
-GITHUB_REPO="https://raw.githubusercontent.com/source-saraiva/ezy-install/main/scripts"
-
-# Detect Rocky Linux version (only major version)
 ROCKY_VERSION=$(rpm -E %{rhel})
 
 # ==============================
@@ -37,7 +43,7 @@ list_scripts() {
     echo "Fetching available Rocky Linux $ROCKY_VERSION scripts from GitHub..."
     echo
 
-    curl -s https://api.github.com/repos/source-saraiva/ezy-install/contents/scripts | \
+    curl -s "$API_URL/scripts" | \
     grep '"name"' | cut -d '"' -f 4 | sort | column
     echo
 }
@@ -45,13 +51,12 @@ list_scripts() {
 # Run the requested script
 run_script() {
     local script_name=$1
-    local script_url="$GITHUB_REPO/$script_name.sh"
+    local script_url="$RAW_BASE_URL/scripts/$script_name.sh"
 
     echo "==========================================================="
     echo "                  Running: $script_name"
     echo "==========================================================="
 
-    # Fetch and run script
     curl -fsSL "$script_url" -o /tmp/$script_name.sh
     if [ $? -ne 0 ]; then
         echo "Error: Failed to fetch $script_name.sh from GitHub."
@@ -90,6 +95,5 @@ while getopts ":lh" opt; do
 done
 shift $((OPTIND -1))
 
-# Run given script
 SCRIPT=$1
 run_script "$SCRIPT"
