@@ -82,12 +82,13 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Service Category                | Recommendation             | Rocky Linux 9 | Rocky Linux 10 |
 |---------------------------------|----------------------------|---------------|----------------|
 | Virtualization                  | Proxmox VE                 | 📀ISO        | 📀ISO          |
+| Backup                          | Proxmox Backup Server      | 📀ISO        | 📀ISO          |
 | Firewall / VPN / IDS / IPS      | Opnsense                   | 📀ISO        | 📀ISO          |
+| Telephony                       | Issabel                    | 📀ISO        | 📀ISO          |
 | Directory                       | Windows Active Directory   | 📀ISO        | 📀ISO          |
 | Server OS                       | Rocky Linux                | 🟡           | 🟢             |
 | Collaboration & Communication   | Nextcloud Files            | 🟡           | 🟢             |
 | Service Desk / Inventory        | GLPI                       | 🟡           | 🟢             |
-| Telephony                       | Issabel                    | 📀ISO        | 📀ISO          |
 | Monitoring                      | Zabbix                     | 🟡           | 🟢             |
 | Patch Management                | Rudder                     | 🟡           | 🟢             |
 | Database Server                 | MariaDB                    | 🟡           | 🟢             |
@@ -96,6 +97,6 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Log Management                  | Graylog                    | 🟡           | 🟡             |
 | Asset Discovery                 | NetBox                     | 🟡           | 🟡             |
 | SIEM                            | Wazuh                      | 🟡           | 🟡             |
-| Backup                          | Proxmox Backup Server      | 📀ISO        | 📀ISo          |
 | Office Productivity             | Libre Office               | 🔴           | 🔴             |
+| LCX Rocky Linux 9 CT Templates  | Rocky Linux 9              | 🟡           | 🟡             |
 
