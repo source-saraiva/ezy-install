@@ -35,6 +35,7 @@ done
 
 if [[ -z "$ZBX_DB_PASSWORD" ]]; then
   echo "No password provided. Generating a secure random password..."
+  dnf install -y openssl
   ZBX_DB_PASSWORD=$(openssl rand -base64 16)
 fi
 
