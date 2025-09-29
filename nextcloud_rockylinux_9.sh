@@ -14,6 +14,9 @@ NC_DB_NAME="nextcloud"
 NC_DB_USER="nextcloud"
 SERVER_IP=$(hostname -I | awk '{print $1}')
 
+
+
+
 # === PROMPT DOMAIN ===
 echo
 read -p "Please enter the IP or URL you will use to access Nextcloud (leave blank to use $(hostname -I | awk '{print $1}')): " SERVER_IP
@@ -34,6 +37,7 @@ while true; do
 done
 
 if [[ -z "$MYSQL_ROOT_PASS" ]]; then
+  dnf install -y openssl
   MYSQL_ROOT_PASS=$(openssl rand -base64 16)
   echo "Generated MariaDB root password: $MYSQL_ROOT_PASS"
 fi
