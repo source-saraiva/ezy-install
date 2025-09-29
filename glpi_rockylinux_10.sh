@@ -38,6 +38,7 @@ while true; do
 done
 
 if [[ -z "$MYSQL_ROOT_PASS" ]]; then
+  dnf install -y openssl
   MYSQL_ROOT_PASS=$(openssl rand -base64 16)
   echo "Generated MariaDB root password: $MYSQL_ROOT_PASS"
 fi
