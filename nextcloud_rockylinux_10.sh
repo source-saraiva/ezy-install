@@ -66,12 +66,12 @@ sudo firewall-cmd --reload
 # === INSTALL PACKAGES ===
 echo "Installing required packages..." | tee -a "$LOG_FILE"
 sudo dnf install -y epel-release unzip wget curl | tee -a "$LOG_FILE"
+sudo dnf install -y mariadb mariadb-server mariadb-devel | tee -a "$LOG_FILE"
 sudo dnf install -y setroubleshoot-server policycoreutils-python-utils | tee -a "$LOG_FILE"
 sudo dnf install -y httpd httpd-tools | tee -a "$LOG_FILE"
 sudo dnf install -y php php-cli php-fpm php-mysqlnd php-zip php-devel \
   php-gd php-json php-mbstring php-curl php-xml php-pear php-bcmath \
   php-opcache php-intl php-ldap | tee -a "$LOG_FILE"
-sudo dnf install -y mariadb mariadb-server mariadb-devel | tee -a "$LOG_FILE"
 
 # === ENABLE SERVICES ===
 echo "Enabling and starting services..." | tee -a "$LOG_FILE"
