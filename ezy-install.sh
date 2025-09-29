@@ -1,92 +1,35 @@
 #!/bin/bash
-
-# ezy-install: Wrapper installer with Rocky Linux version detection
+# ==========================================================
+# ezy-install: Simple command-line installer for predefined scripts hosted on GitHub
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
+# ==========================================================
 
-CURRENT_VERSION="0.2.5"
+CURRENT_VERSION="0.1.1"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
+
 RAW_BASE_URL="https://raw.githubusercontent.com/$REPO_OWNER/$REPO_NAME/$BRANCH"
 API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents"
 
-# Detect Rocky Linux version (9, 10, 11, etc.)
-ROCKY_VERSION=$(grep -oP '(?<=VERSION_ID=")[0-9]+' /etc/os-release 2>/dev/null)
-if [[ -z "$ROCKY_VERSION" ]]; then
-    echo "Could not detect Rocky Linux version. Defaulting to 10."
-    ROCKY_VERSION="10"
+# --- Detect Rocky Linux version ---
+ROCKY_VERSION=$(rpm -E %{rhel})
+SCRIPT_NAME=$(basename "$0")
+BASE_NAME=${SCRIPT_NAME%.*}   # remove extension if exists
+
+# --- Expected script name ---
+TARGET_SCRIPT="${BASE_NAME}_rocky${ROCKY_VERSION}.sh"
+
+echo "Detected Rocky Linux version: ${ROCKY_VERSION}"
+echo "Looking for script: ${TARGET_SCRIPT}"
+
+# --- Check if target script exists in same directory ---
+if [[ -f "$(dirname "$0")/${TARGET_SCRIPT}" ]]; then
+    echo "Found ${TARGET_SCRIPT}, executing..."
+    bash "$(dirname "$0")/${TARGET_SCRIPT}" "$@"
+else
+    echo "ERROR: Script ${TARGET_SCRIPT} not found!"
+    echo "Please make sure you have the correct script for Rocky Linux ${ROCKY_VERSION}."
+    exit 1
 fi
-
-# --- Function: Check for updates ---
-check_updates() {
-    REMOTE_SCRIPT=$(curl -s "$RAW_BASE_URL/ezy-install.sh")
-    if [[ -z "$REMOTE_SCRIPT" ]]; then
-        return
-    fi
-
-    REMOTE_VERSION=$(echo "$REMOTE_SCRIPT" | grep '^CURRENT_VERSION=' | cut -d '"' -f2)
-
-    if [[ -n "$REMOTE_VERSION" && "$REMOTE_VERSION" != "$CURRENT_VERSION" ]]; then
-        echo "⚠️  A new version of ezy-install is available: $REMOTE_VERSION (current: $CURRENT_VERSION)"
-        echo "Update with: curl -o /usr/local/bin/ezy-install $RAW_BASE_URL/ezy-install.sh && chmod +x /usr/local/bin/ezy-install"
-    fi
-}
-
-# --- Function: List available scripts ---
-list_scripts() {
-    echo "==========================================================="
-    echo "                       Available Scripts"
-    echo "==========================================================="
-    echo "Fetching available Rocky Linux $ROCKY_VERSION scripts from GitHub..."
-
-    FILES=$(curl -s "$API_URL" | jq -r '.[].name')
-
-    for file in $FILES; do
-        if [[ "$file" == *_rocky*.sh ]]; then
-            echo "${file%.sh}"
-        fi
-    done
-}
-
-# --- Function: Run a script ---
-run_script() {
-    SCRIPT_NAME="$1"
-
-    if [[ -z "$SCRIPT_NAME" ]]; then
-        echo "Usage: ezy-install <script>"
-        exit 1
-    fi
-
-    SCRIPT_FILE="${SCRIPT_NAME}_rocky${ROCKY_VERSION}.sh"
-    SCRIPT_URL="$RAW_BASE_URL/$SCRIPT_FILE"
-
-    echo "Downloading $SCRIPT_FILE ..."
-    curl -s -O "$SCRIPT_URL"
-
-    if [[ -f "$SCRIPT_FILE" ]]; then
-        chmod +x "$SCRIPT_FILE"
-        echo "Running $SCRIPT_FILE ..."
-        bash "$SCRIPT_FILE"
-    else
-        echo "Error: $SCRIPT_FILE not found in repository."
-    fi
-}
-
-# --- Main ---
-case "$1" in
-    -l|--list)
-        check_updates
-        list_scripts
-        ;;
-    -v|--version)
-        echo "ezy-install version $CURRENT_VERSION"
-        ;;
-    ""|-h|--help)
-        echo "Usage: ezy-install <script> | -l (list) | -v (version)"
-        ;;
-    *)
-        check_updates
-        run_script "$1"
-        ;;
-esac
