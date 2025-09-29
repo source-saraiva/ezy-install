@@ -4,7 +4,7 @@
 # Author: source-saraiva
 # Repository: https://github.com/source-saraiva/ezy-install
 
-CURRENT_VERSION="0.2.0"
+CURRENT_VERSION="0.2.1"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -84,7 +84,14 @@ EOF
 list_available_scripts() {
   echo "Fetching available scripts from GitHub..."
 
-  scripts=$(curl -fsSL "$API_URL" | grep '"name":' | grep '.sh' | cut -d '"' -f 4 | grep -v '^ezy-install.sh$' | sort)
+  scripts=$(curl -fsSL "$API_URL" \
+    | grep '"name":' \
+    | grep '.sh' \
+    | cut -d '"' -f 4 \
+    | grep -v '^ezy-install.sh$' \
+    | sed -E 's/_rocky[0-9]+\.sh$/.sh/' \
+    | sed 's/\.sh$//' \
+    | sort -u)
 
   if [ -z "$scripts" ]; then
     echo "No scripts found or unable to reach GitHub."
@@ -95,8 +102,7 @@ list_available_scripts() {
   echo "==========================================================="
   echo "                       Available Scripts"
   echo "==========================================================="
-
-  echo "$scripts" | sed 's/\.sh$//' | column
+  echo "$scripts" | column
   echo
 }
 
@@ -106,7 +112,7 @@ detect_rocky_version() {
     . /etc/os-release
     rocky_version=$(echo "$VERSION_ID" | cut -d '.' -f1)
   else
-    echo "❌ Cannot detect OS version (missing /etc/os-release)."
+    echo "Cannot detect OS version (missing /etc/os-release)."
     exit 1
   fi
   echo "$rocky_version"
