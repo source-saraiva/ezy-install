@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CURRENT_VERSION="0.1.1"
+CURRENT_VERSION="0.1.2"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
