@@ -87,7 +87,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Telephony                       | Issabel                    | 📀ISO        | 📀ISO          |
 | Directory                       | Windows Active Directory   | 📀ISO        | 📀ISO          |
 | Server OS                       | Rocky Linux                | 📀ISO        | 📀ISO          |
-| LCX Rocky Linux 9 CT Templates  | Rocky Linux 9              | 🟡           | 🔴             |
+| Proxmox LCX Container Templates | Rocky Linux 9              | 🟡           | 🔴             |
 | Collaboration & Communication   | Nextcloud Files            | 🟡           | 🟢             |
 | Service Desk / Inventory        | GLPI                       | 🟡           | 🟢             |
 | Monitoring                      | Zabbix                     | 🟡           | 🟢             |
