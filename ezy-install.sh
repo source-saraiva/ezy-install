@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CURRENT_VERSION="0.1.2"
+CURRENT_VERSION="0.1.3"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -135,11 +135,13 @@ run_script() {
   echo "Downloading script: $full_script_name"
   if ! curl -fsSL "$script_url" -o "$tmp_file"; then
     echo "Error: Failed to download script '$full_script_name'."
+    echo " "
     exit 1
   fi
 
   chmod +x "$tmp_file"
   echo "Executing script: $tmp_file"
+  echo " "
   sudo bash "$tmp_file"
   rm -f "$tmp_file"
 }
