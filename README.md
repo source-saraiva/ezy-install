@@ -94,7 +94,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Patch Management                | Rudder                     | 🟡           | 🟢             |
 | Database Server                 | MariaDB                    | 🟡           | 🟢             |
 | Database Server                 | PostgreSQL                 | 🟡           | 🟢             |
-| Password Management             | Passbolt                   | 🟡           | 🟡             |
+| Password Management             | Passbolt                   | 🟡           | 🔴             |
 | Log Management                  | Graylog                    | 🟡           | 🟡             |
 | Asset Discovery                 | NetBox                     | 🟡           | 🟡             |
 | SIEM                            | Wazuh                      | 🟡           | 🟡             |
