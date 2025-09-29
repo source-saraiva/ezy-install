@@ -88,7 +88,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Directory                       | Windows Active Directory   | 📀ISO        | 📀ISO          |
 | Server OS                       | Rocky Linux                | 📀ISO        | 📀ISO          |
 | Proxmox LCX Container Templates | Rocky Linux                | 🟢           | 🔴             |
-| Collaboration & Communication   | Nextcloud Files            | 🟡           | 🟡             |
+| Collaboration & Communication   | Nextcloud Files            | 🟢           | 🟢             |
 | Service Desk / Inventory        | GLPI                       | 🟡           | 🟡             |
 | Monitoring                      | Zabbix                     | 🟡           | 🟡             |
 | Patch Management                | Rudder                     | 🟡           | 🟡             |
