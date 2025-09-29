@@ -29,7 +29,7 @@ fi
 # ==============================
 
 echo "[Step 1/6] Enabling repositories..."
-sudo dnf config-manager --set-enabled crb
+sudo /usr/bin/crb enable
 sudo dnf install -y epel-release
 
 # ==============================
