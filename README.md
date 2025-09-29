@@ -11,7 +11,7 @@ Setting up a Linux server for specific roles (such as DHCP, DNS, IT asset manage
 - Downloads and runs install scripts on demand  
 - Supports multiple tools: view  
 - Extensible: add your own `.sh` scripts to the repo  
-- Supported Systems: [Rocky Linux 10](https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10.0-x86_64-minimal.iso) (or compatible RHEL-based systems)
+- Supported Systems: [Rocky Linux 9/10](https://rockylinux.org/download) (or compatible RHEL-based systems)
   
 
 ## Installation
@@ -89,7 +89,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Server OS                       | Rocky Linux                | 📀ISO        | 📀ISO          |
 | Proxmox LCX Container Templates | Rocky Linux                | 🟢           | 🔴             |
 | Collaboration & Communication   | Nextcloud Files            | 🟢           | 🟢             |
-| Service Desk / Inventory        | GLPI                       | 🟡           | 🟡             |
+| Service Desk / Inventory        | GLPI                       | 🟢           | 🟢             |
 | Monitoring                      | Zabbix                     | 🟡           | 🟡             |
 | Patch Management                | Rudder                     | 🟡           | 🟡             |
 | Database Server                 | MariaDB                    | 🟡           | 🟡             |
