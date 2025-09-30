@@ -70,6 +70,7 @@ echo "Testing database connection..."
 PGPASSWORD="${ZBX_DB_PASSWORD}" psql -U "${ZBX_DB_USER}" -d "${ZBX_DB_NAME}" -h localhost -c "\\conninfo" | tee -a "$LOG_FILE"
 
 # === CONFIGURE ZABBIX SERVER ===
+sudo systemctl start zabbix-server
 echo "Configuring zabbix_server.conf..."
 sudo sed -i "s|^# DBPassword=.*|DBPassword=${ZBX_DB_PASSWORD}|" /etc/zabbix/zabbix_server.conf
 
