@@ -35,7 +35,7 @@ done
 
 if [[ -z "$ZBX_DB_PASSWORD" ]]; then
   echo "No password provided. Generating a secure random password..."
-  sudo dnf install -y openssl
+  sudo dnf install -y openssl sudo
   ZBX_DB_PASSWORD=$(openssl rand -base64 16)
 fi
 
