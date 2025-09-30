@@ -33,6 +33,7 @@ done
 
 if [[ -z "$MARIADB_ROOT_PASSWORD" ]]; then
   echo "No password provided. Generating a secure random password..."
+  dnf install -y openssl
   MARIADB_ROOT_PASSWORD=$(openssl rand -base64 16)
 fi
 
