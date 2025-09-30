@@ -89,7 +89,12 @@ sudo firewall-cmd --reload
 
 # === CONFIGURE SELINUX ===
 echo "Adjusting SELinux settings..."
-sudo setsebool -P httpd_can_network_connect 1
+if sestatus | grep -q "enabled"; then
+  echo "Adjusting SELinux settings..."
+  sudo setsebool -P httpd_can_network_connect 1
+else
+  echo "SELinux is disabled; skipping SELinux settings adjustment."
+fi
 sudo systemctl restart nginx
 
 # === SHOW SERVICE STATUS ===
