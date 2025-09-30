@@ -51,8 +51,9 @@ sleep 5
 # === INSTALL ZABBIX ===
 echo "Installing Zabbix 7.4 and dependencies..."
 sudo dnf install -y epel-release | tee -a "$LOG_FILE"
-sudo sed -i '/^\[epel\]/,/^\[/ s/^excludepkgs=.*/excludepkgs=zabbix*/' /etc/yum.repos.d/epel.repo || \
-  echo -e "\n[epel]\nexcludepkgs=zabbix*" | sudo tee -a /etc/yum.repos.d/epel.repo
+sudo sed -i '/^\[epel\]/a excludepkgs=zabbix*' /etc/yum.repos.d/epel.repo
+#sudo sed -i '/^\[epel\]/,/^\[/ s/^excludepkgs=.*/excludepkgs=zabbix*/' /etc/yum.repos.d/epel.repo || \
+#  echo -e "\n[epel]\nexcludepkgs=zabbix*" | sudo tee -a /etc/yum.repos.d/epel.repo
 
 sudo rpm -Uvh https://repo.zabbix.com/zabbix/7.4/release/rocky/9/noarch/zabbix-release-latest-7.4.el9.noarch.rpm | tee -a "$LOG_FILE"
 sudo dnf clean all
