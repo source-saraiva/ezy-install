@@ -91,7 +91,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Collaboration & Communication   | Nextcloud Files            | 🟢           | 🟢             |
 | Service Desk / Inventory        | GLPI                       | 🟢           | 🟢             |
 | Monitoring                      | Zabbix                     | 🟢           | 🟢             |
-| Patch Management                | Rudder                     | 🟡           | 🟡             |
+| Patch Management                | Rudder                     | 🟡           | 🟢             |
 | Database Server                 | MariaDB                    | 🟡           | 🟡             |
 | Database Server                 | PostgreSQL                 | 🟡           | 🟡             |
 | Password Management             | Passbolt                   | 🟡           | 🔴             |
