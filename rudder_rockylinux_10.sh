@@ -30,7 +30,7 @@ done
 
 # Auto-generate password if empty
 if [ -z "$RUDDER_ROOT_PASS" ]; then
-  sudo dnf install -y openssl tar wget | tee -a "$LOG_FILE"
+  sudo dnf install -y openssl tar wget
   RUDDER_ROOT_PASS=$(openssl rand -base64 12)
   echo "Auto-generated password for '$RUDDER_ROOT_USER': $RUDDER_ROOT_PASS"
 fi
