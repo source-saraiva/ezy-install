@@ -1401,7 +1401,7 @@ esac
 echo "Configuring firewall..."
 sudo firewall-cmd --add-service=https --permanent
 sudo systemctl restart firewalld
-
+sudo systemctl restart rudder-server
 
 
 # === CREATE A USER ===
