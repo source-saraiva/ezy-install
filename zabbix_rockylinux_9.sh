@@ -35,7 +35,7 @@ done
 
 if [[ -z "$ZBX_DB_PASSWORD" ]]; then
   echo "No password provided. Generating a secure random password..."
-  sudo dnf install -y openssl sudo
+  sudo dnf install -y openssl sudo | tee -a "$LOG_FILE"
   ZBX_DB_PASSWORD=$(openssl rand -base64 16)
 fi
 
@@ -56,7 +56,7 @@ sudo sed -i '/^\[epel\]/,/^\[/ s/^excludepkgs=.*/excludepkgs=zabbix*/' /etc/yum.
 
 sudo rpm -Uvh https://repo.zabbix.com/zabbix/7.4/release/rocky/9/noarch/zabbix-release-latest-7.4.el9.noarch.rpm | tee -a "$LOG_FILE"
 sudo dnf clean all
-sudo dnf install -y zabbix-server-pgsql zabbix-web-pgsql zabbix-nginx-conf zabbix-sql-scripts zabbix-selinux-policy zabbix-agent2 | tee -a "$LOG_FILE"
+sudo dnf install -y zabbix-server-pgsql zabbix-web-pgsql zabbix-nginx-conf zabbix-sql-scripts zabbix-selinux-policy zabbix-agent2 --nobest | tee -a "$LOG_FILE"
 sudo dnf install -y zabbix-agent2-plugin-mongodb zabbix-agent2-plugin-mssql zabbix-agent2-plugin-postgresql | tee -a "$LOG_FILE"
 
 # === CREATE ZABBIX DATABASE AND USER ===
