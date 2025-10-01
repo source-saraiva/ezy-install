@@ -2,6 +2,7 @@
 
 # ===================================================
 #   PostgreSQL 17 ezy-install installation script
+#   Compatible with Rocky Linux 9
 # ===================================================
 
 # === CLEAR TERMINAL ===
@@ -17,7 +18,7 @@ LOG_FILE="/tmp/postgresql_install.log"
 
 # === INSTALL PGDG REPOSITORY AND DISABLE MODULE ===
 echo "Adding PostgreSQL Global Development Group (PGDG) repository..."
-sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm | tee -a "$LOG_FILE"
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm | tee -a "$LOG_FILE"
 
 echo "Disabling default PostgreSQL module..."
 sudo dnf -qy module disable postgresql | tee -a "$LOG_FILE"
@@ -65,4 +66,3 @@ echo "To start service:                sudo systemctl start postgresql-${PG_VERS
 echo "To disable service:              sudo systemctl disable postgresql-${PG_VERSION}"
 echo "To restart service:              sudo systemctl restart postgresql-${PG_VERSION}"
 echo "To connect to DB:                sudo -u postgres /usr/pgsql-${PG_VERSION}/bin/psql"
-echo
