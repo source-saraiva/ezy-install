@@ -93,7 +93,7 @@ sudo dnf install -y curl wget unzip openssl htop bind-utils net-tools traceroute
 | Monitoring                      | Zabbix                     | 🟢           | 🟢             |
 | Patch Management                | Rudder                     | 🟢           | 🟢             |
 | Database Server                 | MariaDB                    | 🟢           | 🟢             |
-| Database Server                 | PostgreSQL                 | 🟡           | 🟢             |
+| Database Server                 | PostgreSQL                 | 🟢           | 🟢             |
 | Password Management             | Passbolt                   | 🟡           | 🔴             |
 | Log Management                  | Graylog                    | 🟡           | 🟡             |
 | Asset Discovery                 | NetBox                     | 🟡           | 🟡             |
