@@ -1,3 +1,5 @@
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=source-saraiva.ezy-install)
+
 # ezy-install
 
 **ezy-install** is a collection of scripts that simplifies the installation and configuration of common packages on Linux servers. Inspired by the "Add Roles and Features" wizard in Microsoft Windows Server, ezy-install offers a similar experience for Linux system administrators. It’s built for sysadmins and devs who want to deploy technical solutions quickly and consistently, without digging through outdated blogs or trial-and-error setup guides.
