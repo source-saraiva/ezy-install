@@ -23,8 +23,9 @@ To install `ezy-install` globally on your system and start using it:
 Download and install the launcher
 
 ```bash
-sudo curl -fsSL https://raw.githubusercontent.com/source-saraiva/ezy-install/main/ezy-install.sh -o /usr/local/bin/ezy-install
-sudo chmod +x /usr/local/bin/ezy-install
+curl -fsSL https://raw.githubusercontent.com/source-saraiva/ezy-install/main/ezy-install.sh -o /tmp/ezy-install && \
+chmod +x /tmp/ezy-install && \
+sudo mv /tmp/ezy-install /usr/local/bin/ezy-install
 ```
 ## Usage
 
