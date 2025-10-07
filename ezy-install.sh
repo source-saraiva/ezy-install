@@ -18,23 +18,11 @@ detect_distro_suffix() {
     version_major=$(echo "$VERSION_ID" | cut -d '.' -f1)
 
     case "$distro_id" in
-      rocky)
+      ol|oracle|oraclelinux|rhel|almalinux|centos|centosstream|eul|eurolinux|clearos)
         DISTRO_SUFFIX="rockylinux_${version_major}"
         ;;
-      almalinux)
-        DISTRO_SUFFIX="almalinux_${version_major}"
-        ;;
-      ol)
-        DISTRO_SUFFIX="ol_${version_major}"
-        ;;
-      ubuntu)
-        DISTRO_SUFFIX="ubuntu_${version_major}"
-        ;;
-      debian)
-        DISTRO_SUFFIX="debian_${version_major}"
-        ;;
       *)
-        echo "Warning: Unsupported or unknown distro '$distro_id'."
+        echo "Warning: Unsupported or unknown distro '$distro_id'. Please use Rocky Linux 9+ or any RHEL-compatible system."
         DISTRO_SUFFIX=""
         ;;
     esac
