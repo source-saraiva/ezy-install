@@ -24,6 +24,9 @@ detect_distro_suffix() {
       almalinux)
         DISTRO_SUFFIX="almalinux_${version_major}"
         ;;
+      ol)
+        DISTRO_SUFFIX="ol_${version_major}"
+        ;;
       ubuntu)
         DISTRO_SUFFIX="ubuntu_${version_major}"
         ;;
