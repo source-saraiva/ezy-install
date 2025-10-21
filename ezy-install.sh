@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-CURRENT_VERSION="0.1.3"
+CURRENT_VERSION="0.1.4"
 REPO_OWNER="source-saraiva"
 REPO_NAME="ezy-install"
 BRANCH="main"
@@ -18,7 +18,7 @@ detect_distro_suffix() {
     version_major=$(echo "$VERSION_ID" | cut -d '.' -f1)
 
     case "$distro_id" in
-      ol|oracle|oraclelinux|rhel|almalinux|centos|centosstream|eul|eurolinux|clearos)
+      ol|oracle|oraclelinux|rhel|almalinux|centos|centosstream|eul|eurolinux|clearos|rocky)
         DISTRO_SUFFIX="rockylinux_${version_major}"
         ;;
       *)
