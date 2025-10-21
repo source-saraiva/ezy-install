@@ -66,6 +66,7 @@ sudo dnf install -y \
   ncurses \
   mtr \
   firewalld \
+  openssh-server \
   nc
 
 echo "[Step 2/6] Updating system..."
@@ -118,6 +119,13 @@ cat /dev/null > ~/.bash_history
 cat /dev/null > /root/.bash_history
 rm -f /var/log/bash_history
 
+
+# ==============================
+# === ADD PERMIT ROOT LOGIN ===
+# ==============================
+echo "PermitRootLogin yes" | sudo tee /etc/ssh/sshd_config.d/permit_root.conf
+
+
 # ==============================
 # === FINAL INSTRUCTIONS ===
 # ==============================
@@ -129,6 +137,8 @@ echo "=========================================================="
 echo "The container has been cleaned and is now ready to be"
 echo "converted into a template. Recommended next step:"
 echo
+echo "Note: SSH Root login is permitted"
+echo "Change 'PermitRootLogin no' on file: /etc/ssh/sshd_config.d/permit_root.conf"
 echo "  shutdown now"
 echo
 echo "After shutdown, convert this VM/container into a template."
