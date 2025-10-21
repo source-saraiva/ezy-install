@@ -124,7 +124,7 @@ rm -f /var/log/bash_history
 # === ADD PERMIT ROOT LOGIN ===
 # ==============================
 echo "PermitRootLogin yes" | sudo tee /etc/ssh/sshd_config.d/permit_root.conf
-
+systemctl enabled sshd
 
 # ==============================
 # === FINAL INSTRUCTIONS ===
