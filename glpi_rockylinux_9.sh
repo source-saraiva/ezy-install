@@ -151,14 +151,19 @@ sudo sed -i 's/^session.cookie_httponly =.*/session.cookie_httponly = 1/' /etc/p
 sudo systemctl restart php-fpm
 
 # === SELINUX SETTINGS ===
-echo "Adjusting SELinux policies..." | tee -a "$LOG_FILE"
-sudo semanage fcontext -a -t httpd_sys_rw_content_t "${INSTALL_DIR}(/.*)?"
-sudo restorecon -Rv "$INSTALL_DIR"
-sudo setsebool -P httpd_can_sendmail 1
-sudo setsebool -P httpd_can_network_connect 1
-sudo setsebool -P httpd_can_network_connect_db 1
-sudo setsebool -P httpd_mod_auth_ntlm_winbind 1
-sudo setsebool -P allow_httpd_mod_auth_ntlm_winbind 1
+if command -v getenforce >/dev/null 2>&1 && [ "$(getenforce)" != "Disabled" ]; then
+    echo "Adjusting SELinux policies..." | tee -a "$LOG_FILE"
+    sudo semanage fcontext -a -t httpd_sys_rw_content_t "${INSTALL_DIR}(/.*)?"
+    sudo restorecon -Rv "$INSTALL_DIR"
+    sudo setsebool -P httpd_can_sendmail 1
+    sudo setsebool -P httpd_can_network_connect 1
+    sudo setsebool -P httpd_can_network_connect_db 1
+    sudo setsebool -P httpd_mod_auth_ntlm_winbind 1
+    sudo setsebool -P allow_httpd_mod_auth_ntlm_winbind 1
+    echo "SELinux policies adjusted successfully." | tee -a "$LOG_FILE"
+else
+    echo "Note: SELinux is not enabled or not installed. Skipping SELinux configuration." | tee -a "$LOG_FILE"
+fi
 
 # Apache restart 
 sudo systemctl restart httpd
