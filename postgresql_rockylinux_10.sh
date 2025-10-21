@@ -39,9 +39,15 @@ echo "PostgreSQL version installed:"
 /usr/pgsql-${PG_VERSION}/bin/psql --version | tee -a "$LOG_FILE"
 
 # === CONFIGURE FIREWALL ===
-echo "Opening PostgreSQL port ${PG_PORT}/tcp in the firewall..."
-sudo firewall-cmd --permanent --zone=public --add-port=${PG_PORT}/tcp
-sudo firewall-cmd --reload
+if systemctl is-active --quiet firewalld; then
+    echo "Opening PostgreSQL port ${PG_PORT}/tcp in the firewall..."
+    sudo firewall-cmd --permanent --zone=public --add-port=${PG_PORT}/tcp
+    sudo firewall-cmd --reload
+    echo "Firewall updated successfully."
+else
+    echo "Note: firewalld is not running. Skipping firewall configuration."
+fi
+
 
 # === SHOW SERVICE STATUS ===
 echo "Checking service status..."
