@@ -82,9 +82,14 @@ expect eof
 EOF
 
 # === CONFIGURE FIREWALL ===
-echo "Opening MariaDB port ${MARIADB_PORT}/tcp in the firewall..."
-sudo firewall-cmd --permanent --zone=public --add-port=${MARIADB_PORT}/tcp
-sudo firewall-cmd --reload
+if systemctl is-active --quiet firewalld; then
+    echo "Opening MariaDB port ${MARIADB_PORT}/tcp in the firewall..."
+    sudo firewall-cmd --permanent --zone=public --add-port=${MARIADB_PORT}/tcp
+    sudo firewall-cmd --reload
+    echo "Firewall updated successfully."
+else
+    echo "Note: firewalld is not running. Skipping firewall configuration."
+fi
 
 # === SHOW SERVICE STATUS ===
 echo "Checking service status..."
