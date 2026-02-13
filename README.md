@@ -10,6 +10,9 @@ The project has been migrated to Skillmio, where it continues as an actively dev
 🔗 New home: https://github.com/skillmio/adr
 
 Contributions, issues, and discussions should now be directed to the Skillmio repository.
+
+
+
 ---
 
 
