@@ -9,7 +9,11 @@
 > 🔗 **New home:** https://github.com/skillmio/adr
 >
 > Contributions, issues, and discussions should now be directed to the Skillmio repository.
-
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
