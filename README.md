@@ -1,19 +1,15 @@
 ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=source-saraiva.ezy-install)
 
----
-# Project Transition Notice
+> ⚠️ **Project Transition Notice**
+>
+> This repository is no longer actively maintained.
+>
+> The project has been migrated to [**Skillmio**](https://github.com/skillmio/), where it continues as an actively developed and supported initiative.
+>
+> 🔗 **New home:** https://github.com/skillmio/adr
+>
+> Contributions, issues, and discussions should now be directed to the Skillmio repository.
 
-This repository is no longer actively maintained.
-
-The project has been migrated to Skillmio, where it continues as an actively developed and supported initiative.
-
-🔗 New home: https://github.com/skillmio/adr
-
-Contributions, issues, and discussions should now be directed to the Skillmio repository.
-
-
-
----
 
 
 
